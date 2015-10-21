@@ -1,0 +1,22 @@
+{
+  "name": "mudwetandbeers.com",
+  "version": "0.0.1",
+  "description": "",
+  "main": "deploy.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrlinnegar/MudWetandBeers.com.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mrlinnegar/MudWetandBeers.com/issues"
+  },
+  "homepage": "https://github.com/mrlinnegar/MudWetandBeers.com#readme",
+  "devDependencies": {
+    "s3": "^4.4.0"
+  }
+}
