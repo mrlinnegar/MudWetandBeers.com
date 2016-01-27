@@ -1,0 +1,8 @@
+//- post.jade
+extends layout
+block content
+  .post-header
+    h4.post-title= title
+    div.details #{author}, #{publishDate}
+  .post-content      
+    div!= contents
