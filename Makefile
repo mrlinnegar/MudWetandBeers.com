@@ -7,4 +7,7 @@ clean:
 deploy:
 	node scripts/deploy.js
 
+serve:
+	node --harmony serve.js
+
 .PHONY: build serve clean

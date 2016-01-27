@@ -1,0 +1,13 @@
+//- layout.jade
+doctype
+html
+  head
+    include partials/_head.jade
+  body(onload="initmapbuilder()")
+    include partials/_google-tag-manager.jade
+    section
+      .Grid
+        .Grid--cell
+          block content
+
+    include partials/_footer.jade
