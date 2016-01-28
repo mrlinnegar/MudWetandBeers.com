@@ -29,6 +29,7 @@ Metalsmith(__dirname)
     }
   }))
   .use(markdown())
+  .use(excerpts())
   .use(branch('walks/**.html')
     .use(permalinks({
       pattern:':collection/:title'
@@ -43,7 +44,7 @@ Metalsmith(__dirname)
   )
   .use(layouts({
     engine: 'jade',
-    moment: 'moment'
+    moment: moment
   }))
   .use(sass({
   	outputDir: function(originalPath) { 

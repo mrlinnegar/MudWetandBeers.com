@@ -2,3 +2,11 @@ body {
 	font-size: 120%;
 	line-height: 1.6875;
 }
+
+a {
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}

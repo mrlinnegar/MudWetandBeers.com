@@ -3,6 +3,7 @@
 @import "base/typography";
 
 //@import "components/grid";
+@import "components/site-navigation";
 
 * {
   font-family: 'Open Sans', sans-serif;
@@ -17,15 +18,8 @@
   text-align: left;
   min-height: 500px;
   display: flex;
-
-
-
 }
 
-.Grid {
-    max-width: 800px;
-    margin: auto;
-}
 
 .Article--title {
   color: white;
@@ -39,3 +33,7 @@
   width: 100%;
 }
 
+.Grid {
+  max-width: 800px;
+  margin: auto;
+}

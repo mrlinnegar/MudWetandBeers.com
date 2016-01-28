@@ -10,6 +10,7 @@ var Metalsmith = require('metalsmith'),
   excerpts = require('metalsmith-excerpts'),
   moment = require('moment');
 
+
 Metalsmith(__dirname)
 	.metadata({
     site: {
@@ -27,6 +28,7 @@ Metalsmith(__dirname)
     }
   }))
   .use(markdown())
+  .use(excerpts())
   .use(branch('walks/**.html')
     .use(permalinks({
       pattern:':collection/:title'
@@ -41,7 +43,7 @@ Metalsmith(__dirname)
   )
   .use(layouts({
     engine: 'jade',
-    moment: 'moment'
+    moment: moment
   }))
   .use(sass({
   	outputDir: function(originalPath) { 
@@ -50,6 +52,7 @@ Metalsmith(__dirname)
   	},
     outputStyle: "compressed"
   }))
+
   .destination('./build')
   .build(function(err){
   	if (err) throw err;

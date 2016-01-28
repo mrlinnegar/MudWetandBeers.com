@@ -2,9 +2,10 @@
 extends layout
 block content
   .post-header
-    h4.post-title= title
-    div.details #{author}, #{publishDate}
+    div.details #{moment(publishDate).format("D MMM YYYY")}
   #map
 
   .post-content      
     div!= contents
+
+    div By #{author}
