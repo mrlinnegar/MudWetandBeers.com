@@ -3,7 +3,7 @@ extends layout
 block content
   h4 Posts about 
     //- get the tag url and name
-    a(href="/#{tag}").tag #{tag}
+    a(href="/#{tag.toLowerCase()}").tag #{tag}
   ul.post-list
     //- get each post with this tag
     each post in pagination.files
