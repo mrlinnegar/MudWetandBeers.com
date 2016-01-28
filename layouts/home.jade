@@ -1,0 +1,17 @@
+//- page.jade
+extends layout
+
+block content
+  h1!= title
+    
+  div!= contents
+
+  ul
+  each walk in collections.walks
+    li.post-item
+      h5.title
+        a(href="/#{walk.path}")
+          =walk.title
+      div !{walk.excerpt}
+        a(href="/#{walk.path}" class="readmore") read more
+          
