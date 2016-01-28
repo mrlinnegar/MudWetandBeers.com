@@ -8,6 +8,7 @@ var Metalsmith = require('metalsmith'),
   permalinks = require('metalsmith-permalinks'),
   collections = require('metalsmith-collections'),
   excerpts = require('metalsmith-excerpts'),
+  tags = require('metalsmith-tags'),
   moment = require('moment');
 
 
@@ -20,6 +21,11 @@ Metalsmith(__dirname)
     }
   })
   .source('./src')
+  .use(tags({
+    handle: 'tags',
+    path: ':tag.html',
+    layout: 'tag.jade'
+  }))
   .use(collections({
     walks: {
       pattern: 'walks/*.md',

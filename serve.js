@@ -2,15 +2,17 @@
 
 var Metalsmith = require('metalsmith'),
  branch = require('metalsmith-branch'),
-	sass = require('metalsmith-sass'),
-	layouts = require('metalsmith-layouts'),
+  sass = require('metalsmith-sass'),
+  layouts = require('metalsmith-layouts'),
   markdown   = require('metalsmith-markdown'),
   permalinks = require('metalsmith-permalinks'),
   collections = require('metalsmith-collections'),
   excerpts = require('metalsmith-excerpts'),
+  tags = require('metalsmith-tags'),
   watch = require('metalsmith-watch'),
   serve = require('metalsmith-serve'),
   moment = require('moment');
+
 
 Metalsmith(__dirname)
   .metadata({
@@ -20,7 +22,12 @@ Metalsmith(__dirname)
       build_number: process.env.SNAP_PIPELINE_COUNTER  || 'local build'
     }
   })
-	.source('./src')
+  .source('./src')
+  .use(tags({
+    handle: 'tags',
+    path: ':tag.html',
+    layout: 'tag.jade'
+  }))
   .use(collections({
     walks: {
       pattern: 'walks/*.md',
@@ -47,12 +54,13 @@ Metalsmith(__dirname)
     moment: moment
   }))
   .use(sass({
-  	outputDir: function(originalPath) { 
-    		// this will change scss/some/path to css/some/path 
-    		return originalPath.replace("scss", "css");
-  	},
-    outputStyle: 'compressed'
+    outputDir: function(originalPath) { 
+        // this will change scss/some/path to css/some/path 
+        return originalPath.replace("scss", "css");
+    },
+    outputStyle: "compressed"
   }))
+
   .use(serve({
     port: 8080,
     http_error_files: {

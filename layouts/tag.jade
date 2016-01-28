@@ -1,0 +1,15 @@
+//- tag.jade
+extends layout
+block content
+  h4 Posts about 
+    //- get the tag url and name
+    a(href="/#{tag}").tag #{tag}
+  ul.post-list
+    //- get each post with this tag
+    each post in pagination.files
+      li.post-item
+        h5.title
+          a(href="/#{post.path}")
+           =post.title
+
+      hr

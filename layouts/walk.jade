@@ -3,6 +3,15 @@ extends layout
 block content
   .post-header
     div.details #{moment(publishDate).format("D MMM YYYY")}
+
+
+  if tags && tags.length > 0
+    .tags
+      each tag, index in tags
+        a(href="/#{tag}").tag #{tag}
+        if index != tags.length -1
+          | ,
+
   #map
 
   .post-content      
