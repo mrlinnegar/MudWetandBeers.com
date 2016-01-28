@@ -11,7 +11,14 @@ var Metalsmith = require('metalsmith'),
   moment = require('moment');
 
 Metalsmith(__dirname)
-	.source('./src')
+	.metadata({
+    site: {
+      title: 'James Linnegar',
+      url: 'http://mudwetandbeers.com',
+      build_number: process.env.SNAP_PIPELINE_COUNTER  || 'local build'
+    }
+  })
+  .source('./src')
   .use(collections({
     walks: {
       pattern: 'walks/*.md',
@@ -42,7 +49,7 @@ Metalsmith(__dirname)
     		return originalPath.replace("scss", "css");
   	}
   }))
-    .destination('./build')
-    .build(function(err){
-    	if (err) throw err;
-  	});
+  .destination('./build')
+  .build(function(err){
+  	if (err) throw err;
+	});

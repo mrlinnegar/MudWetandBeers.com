@@ -13,6 +13,13 @@ var Metalsmith = require('metalsmith'),
   moment = require('moment');
 
 Metalsmith(__dirname)
+  .metadata({
+    site: {
+      title: 'James Linnegar',
+      url: 'http://mudwetandbeers.com',
+      build_number: process.env.SNAP_PIPELINE_COUNTER  || 'local build'
+    }
+  })
 	.source('./src')
   .use(collections({
     walks: {
