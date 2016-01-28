@@ -49,7 +49,8 @@ Metalsmith(__dirname)
   	outputDir: function(originalPath) { 
     		// this will change scss/some/path to css/some/path 
     		return originalPath.replace("scss", "css");
-  	}
+  	},
+    outputStyle: 'compressed'
   }))
   .use(serve({
     port: 8080,
