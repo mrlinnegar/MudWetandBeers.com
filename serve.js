@@ -47,7 +47,7 @@ Metalsmith(__dirname)
   .use(serve({
     port: 8080,
     http_error_files: {
-      404: "/404.html"
+      404: "/page-not-found/"
     }
   }))
   .use(watch({
