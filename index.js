@@ -6,7 +6,9 @@ var Metalsmith = require('metalsmith'),
 	layouts = require('metalsmith-layouts'),
   markdown   = require('metalsmith-markdown'),
   permalinks = require('metalsmith-permalinks'),
-  collections = require('metalsmith-collections');
+  collections = require('metalsmith-collections'),
+  excerpts = require('metalsmith-excerpts'),
+  moment = require('moment');
 
 Metalsmith(__dirname)
 	.source('./src')
@@ -18,22 +20,21 @@ Metalsmith(__dirname)
     }
   }))
   .use(markdown())
-  .use(branch('posts/**.html')
+  .use(branch('walks/**.html')
     .use(permalinks({
       pattern:':collection/:title'
     }))
   )
   .use(branch('**.html')
     .use(branch('!index.html')
-      .use(branch('!404.html')
-        .use(permalinks({
-          pattern:':title'
-        }))
-      )
+      .use(permalinks({
+        pattern:':title'
+      }))
     )
   )
   .use(layouts({
-    engine: 'jade'
+    engine: 'jade',
+    moment: 'moment'
   }))
   .use(sass({
   	outputDir: function(originalPath) { 
