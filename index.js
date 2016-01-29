@@ -43,9 +43,10 @@ Metalsmith(__dirname)
     )
   )
   .use(tags({
+    title: "Walks in :tag",
     handle: 'tags',
     path: ':tag/index.html',
-    pathPage: ':tag/:num/',
+    pathPage: ':tag/:num/index.html',
     perPage: 2,
     layout: 'tag.jade',
     slug: function(tag) { return tag.toLowerCase() }
