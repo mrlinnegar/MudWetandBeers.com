@@ -13,3 +13,9 @@ block content
            =post.title
 
       hr
+
+  if pagination.previous
+    a(href="/#{pagination.previous.path}") Previous
+
+  if pagination.next
+    a(href="/#{pagination.next.path}") Next

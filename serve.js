@@ -8,11 +8,15 @@ var Metalsmith = require('metalsmith'),
   permalinks = require('metalsmith-permalinks'),
   collections = require('metalsmith-collections'),
   excerpts = require('metalsmith-excerpts'),
-  tags = require('metalsmith-tags'),
+  tags = require('./lib/metalsmith-tags/lib/index.js'),
   watch = require('metalsmith-watch'),
   serve = require('metalsmith-serve'),
   moment = require('moment');
 
+var plugin = function(files, metalsmith, done) {
+  console.log(files);
+  done();
+};
 
 Metalsmith(__dirname)
   .metadata({
@@ -24,11 +28,6 @@ Metalsmith(__dirname)
     }
   })
   .source('./src')
-  .use(tags({
-    handle: 'tags',
-    path: ':tag.html',
-    layout: 'tag.jade'
-  }))
   .use(collections({
     walks: {
       pattern: 'walks/*.md',
@@ -50,6 +49,15 @@ Metalsmith(__dirname)
       }))
     )
   )
+  .use(tags({
+    title: "Walks in :tag",
+    handle: 'tags',
+    path: ':tag/index.html',
+    pathPage: ':tag/:num/index.html',
+    perPage: 2,
+    layout: 'tag.jade',
+    slug: function(tag) { return tag.toLowerCase() }
+  }))
   .use(layouts({
     engine: 'jade',
     moment: moment
@@ -75,6 +83,7 @@ Metalsmith(__dirname)
       },
     livereload: true
   }))
+  .use(plugin)
   .destination('./build')
   .build(function(err){
   	if (err) throw err;

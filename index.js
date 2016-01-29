@@ -8,12 +8,11 @@ var Metalsmith = require('metalsmith'),
   permalinks = require('metalsmith-permalinks'),
   collections = require('metalsmith-collections'),
   excerpts = require('metalsmith-excerpts'),
-  tags = require('metalsmith-tags'),
+  tags = require('./lib/metalsmith-tags/lib/index.js'),
   moment = require('moment');
 
-
 Metalsmith(__dirname)
-	.metadata({
+  .metadata({
     site: {
       title: 'James Linnegar',
       url: 'http://mudwetandbeers.com',
@@ -22,11 +21,6 @@ Metalsmith(__dirname)
     }
   })
   .source('./src')
-  .use(tags({
-    handle: 'tags',
-    path: ':tag.html',
-    layout: 'tag.jade'
-  }))
   .use(collections({
     walks: {
       pattern: 'walks/*.md',
@@ -48,18 +42,25 @@ Metalsmith(__dirname)
       }))
     )
   )
+  .use(tags({
+    handle: 'tags',
+    path: ':tag/index.html',
+    pathPage: ':tag/:num/',
+    perPage: 2,
+    layout: 'tag.jade',
+    slug: function(tag) { return tag.toLowerCase() }
+  }))
   .use(layouts({
     engine: 'jade',
     moment: moment
   }))
   .use(sass({
-  	outputDir: function(originalPath) { 
-    		// this will change scss/some/path to css/some/path 
-    		return originalPath.replace("scss", "css");
-  	},
+    outputDir: function(originalPath) { 
+        // this will change scss/some/path to css/some/path 
+        return originalPath.replace("scss", "css");
+    },
     outputStyle: "compressed"
   }))
-
   .destination('./build')
   .build(function(err){
   	if (err) throw err;
