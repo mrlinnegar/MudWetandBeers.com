@@ -1,9 +1,48 @@
 @import "lib/normalize";
-
+@import "lib/gridle/gridle";
 @import "base/typography";
 
 //@import "components/grid";
 @import "components/site-navigation";
+
+
+
+// setting up the grid
+@include gridle_setup( (
+    context : 12,
+    gutter-width : 20px,
+    direction : ltr,
+    // etc...
+) );
+
+// make the use of media queries really easy
+@include gridle_register_state ( mobile , (
+    max-width : 480px 
+) );
+
+
+@include gridle_register_state ( tablet , (
+    min-width : 481px,
+    max-width : 1024px
+) ) ;
+
+
+// generate classes :
+@include gridle_generate_classes ( );
+
+// manage container width :
+.Grid {
+    max-width : 1200px;
+    margin : 0 auto;
+}
+
+.Grid--cell {
+    @include gridle_grid ( 12 );
+}
+
+.Post-item {
+  @include gridle_grid ( 4 );
+}
 
 * {
   font-family: 'Open Sans', sans-serif;
@@ -31,9 +70,4 @@
 #map {
   height: 400px;
   width: 100%;
-}
-
-.Grid {
-  max-width: 800px;
-  margin: auto;
 }

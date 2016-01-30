@@ -1,0 +1,53 @@
+@mixin media-query-palm {
+  @media screen and (min-width: 400px) {
+    @content;
+  }
+}
+
+@mixin media-query-palm-only {
+  @media screen and (max-width: 600px) {
+    @content;
+  }
+}
+
+@mixin media-query-lap {
+  @media screen and (min-width: 600px) {
+    @content;
+  }
+}
+
+@mixin media-query-greenhouse-mobile {
+  @media screen and (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin media-query-portable {
+  @media screen and (min-width: 800px) {
+    @content;
+  }
+}
+
+@mixin media-query-desk {
+  @media screen and (min-width: 985px) {
+    @content;
+  }
+}
+
+@mixin media-query-desk-wide {
+  @media screen and (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin media-query-menu-break {
+  @media screen and (min-width: 850px) {
+    @content;
+  }
+}
+
+@mixin media-query-retina {
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    @content;
+  }
+}

@@ -8,15 +8,12 @@ html
 
     section
       .Grid
-        .Grid--cell
-          h1!= title
-    section
-      .Grid
-        .Grid--cell
-         include partials/_navigation.jade
-    section
-      .Grid
-        .Grid--cell
-          block content
+        .row
+          .Grid--cell
+            h1!= title
+
+    include partials/_navigation.jade
+
+    block content
 
     include partials/_footer.jade

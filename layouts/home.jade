@@ -2,15 +2,20 @@
 extends layout
 
 block content
-    
-  div!= contents
+  section
+    .Grid
+      .row  
+        .Grid--cell
+          div!= contents
 
-  ul
-  each walk in collections.walks
-    li.post-item
-      h5.title
-        a(href="/#{walk.path}")
-          =walk.title
-      div !{walk.excerpt}
-        a(href="/#{walk.path}" class="readmore") read more
-          
+  section
+    .Grid
+      .row
+        each walk in collections.walks
+          div.Post-item
+            h5.title
+              a(href="/#{walk.path}")
+                =walk.title
+            div !{walk.excerpt}
+              a(href="/#{walk.path}" class="readmore") read more
+                

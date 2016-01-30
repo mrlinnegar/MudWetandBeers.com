@@ -1,21 +1,25 @@
 //- tag.jade
 extends layout
 block content
-  h4 Posts about 
-    //- get the tag url and name
-    a(href="/#{tag.toLowerCase()}").tag #{tag}
-  ul.post-list
-    //- get each post with this tag
-    each post in pagination.files
-      li.post-item
-        h5.title
-          a(href="/#{post.path}")
-           =post.title
 
-      hr
+  //- get the tag url and name
+  //- a(href="/#{tag.toLowerCase()}").tag #{tag}
+  //- get each post with this tag
+  section
+    .Grid
+      .row
+        each post in pagination.files
+          div.Post-item
+            h5.title
+              a(href="/#{post.path}")
+                =post.title
 
-  if pagination.previous
-    a(href="/#{pagination.previous.path}") Previous
+  section
+    .Grid
+      .row
+        .Grid--cell
+          if pagination.previous
+            a(href="/#{pagination.previous.path}") Previous
 
-  if pagination.next
-    a(href="/#{pagination.next.path}") Next
+          if pagination.next
+            a(href="/#{pagination.next.path}") Next

@@ -2,13 +2,16 @@
 extends layout
 
 block content
-    
-  div!= contents
+  section
+    .Grid
+      .row
+        .Grid--cell
+          div!= contents
 
-  h3 Build Number: 
-    em!= site.build_number
-    span .
+          h3 Build Number: 
+            em!= site.build_number
+            span .
 
-  h3 Last Built: 
-    em!= moment(site.build_time).format("h:mma D MMM YYYY")
-    span .    
+          h3 Last Built: 
+            em!= moment(site.build_time).format("h:mma D MMM YYYY")
+            span .    
