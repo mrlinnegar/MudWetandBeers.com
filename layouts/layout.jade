@@ -6,13 +6,7 @@ html
   body(onload="initmapbuilder()")
     include partials/_google-tag-manager.jade
 
-    section
-      .Grid
-        .row
-          .Grid--cell
-            h1!= title
-
-    include partials/_navigation.jade
+    block head
 
     block content
 

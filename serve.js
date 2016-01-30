@@ -21,7 +21,8 @@ var plugin = function(files, metalsmith, done) {
 Metalsmith(__dirname)
   .metadata({
     site: {
-      title: 'James Linnegar',
+      title: 'MudWetandBeers.com',
+      lead: 'Walks for normal people.',
       url: 'http://mudwetandbeers.com',
       build_time: new Date(),
       build_number: process.env.SNAP_PIPELINE_COUNTER  || 'local build'
@@ -56,7 +57,7 @@ Metalsmith(__dirname)
     pathPage: ':tag/:num/index.html',
     perPage: 2,
     layout: 'tag.jade',
-    slug: function(tag) { return tag.toLowerCase() }
+    slug: function(tag) { return tag.toLowerCase().replace(' ','-'); }
   }))
   .use(layouts({
     engine: 'jade',

@@ -1,13 +1,12 @@
 //- page.jade
 extends layout
 
-block content
-  section
-    .Grid
-      .row  
-        .Grid--cell
-          div!= contents
+block head
+  section.Site--header
+    h1.Site--title=site.title
+    p.Site--lead=site.lead
 
+block content
   section
     .Grid
       .row

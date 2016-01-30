@@ -1,6 +1,19 @@
 //- post.jade
-extends layout
+extends page
+block head
+  section
+    .Grid
+      .row
+        .Grid--cell
+          a.Site--home-link(href='/') MudWetandBeers.com
+
 block content
+  section
+    .Grid
+      .row
+        .Grid--cell
+          h1.Article--title!= title
+
   section
     .Grid
       .row
