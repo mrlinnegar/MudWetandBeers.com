@@ -9,12 +9,12 @@ block head
 block content
   section
     .Grid
-      .row
+      div(class="row row@mobile")
         each walk in collections.walks
-          div.Post-item
+          div(class="gr-4 gr-6@tablet gr-12@mobile").Post-item
             h5.title
               a(href="/#{walk.path}")
                 =walk.title
             div !{walk.excerpt}
               a(href="/#{walk.path}" class="readmore") read more
-                
+

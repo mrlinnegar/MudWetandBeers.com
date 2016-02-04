@@ -7,10 +7,19 @@
 }
 
 
+@mixin rem-font-size($sizeValue: 1.6) {
+  font-size: ($sizeValue * 10) + px;
+  font-size: $sizeValue + rem;
+}
+
+
+html {
+	font-size: 10px;
+}
 
 body {
-	font-size: 120%;
-	line-height: 1.6875;
+	@include rem-font-size(2);
+   font-family: 'Open Sans', sans-serif;
 }
 
 a {

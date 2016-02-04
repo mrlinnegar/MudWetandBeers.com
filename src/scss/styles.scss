@@ -3,21 +3,32 @@
 @import "base/typography";
 
 //@import "components/grid";
+@import "components/site-header";
 @import "components/site-navigation";
 
-
+$settings : (
+    context : 12,           // number of columns in your grid
+    column-width : null,    // by default it's percentage based depending on the context but you can specify a column width yourself
+    gutter-width : 20px,    // size of the gutters
+    gutter-height : 0,      // size of top and bottom gutters
+    gutter-top    : 0,      // size of top gutter
+    gutter-bottom : 0,      // size of bottom gutter
+    gutter-left   : 10px,   // size of left gutter
+    gutter-right  : 10px,   // size of right gutter
+    direction : ltr,        // direction
+    dir-attribute : false,  // if need to generate support for dir="rtl" in order to set part of layout direction
+    states-classes : false, // if we need to generate the states classes
+    name-multiplicator : 1, // if 5, generate gr-5, gr-10, etc...
+    classes-prefix : ''     // the prefix used for all classes
+);
 
 // setting up the grid
-@include gridle_setup( (
-    context : 12,
-    gutter-width : 20px,
-    direction : ltr,
-    // etc...
-) );
+@include gridle_setup($settings);
 
 // make the use of media queries really easy
 @include gridle_register_state ( mobile , (
-    max-width : 480px 
+    max-width : 480px,
+    gutter-left: 10px
 ) );
 
 
@@ -30,6 +41,7 @@
 // generate classes :
 @include gridle_generate_classes ( );
 
+
 body {
     background-color: #F4F4F4;
 }
@@ -39,41 +51,20 @@ body {
     margin : 0 auto;
 }
 
-.Grid--cell {
-    @include gridle_grid ( 12 );
-}
 
 .Post-item {
-  @include gridle_grid ( 4 );
+
+  .title {
+    font-family: 'UmbrageRegular';
+    @include rem-font-size(2.5);
+
+    a {
+      color: black;
+    }
+  }
 }
 
-* {
-  font-family: 'Open Sans', sans-serif;
-}
 
-.Site--header {
-  background-image: url(/images/water.jpg);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  position: relative;
-  text-align: center;
-  padding: 80px 0;
-}
-
-.Site--title {
-  color: white;
-  font-size: 4em;
-  text-shadow: 0 0 10px black;
-  font-variant: small-caps;
-  margin: 0 30px;
-}
-
-.Site--lead {
-  font-size: 1.5em;
-  color: white;
-  text-shadow: 0 0 5px black;
-}
 
 .Site--home-link {
   font-family: 'UmbrageRegular';
