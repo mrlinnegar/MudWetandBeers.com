@@ -1,0 +1,36 @@
+//- page.jade
+extends layout
+
+block head
+
+  section
+    .Grid
+      .row
+        .Grid--cell
+          a.Site--home-link(href='/') MudWetandBeers.com
+
+block content
+  section
+    .Grid
+      .row
+        .Grid--cell
+          h1.Article--title Search
+
+  section
+    .Grid
+      .row
+        .Grid--cell
+
+            script.
+              (function() {
+                var cx = '016123358644520971170:mlmdfgshu6o';
+                var gcse = document.createElement('script');
+                gcse.type = 'text/javascript';
+                gcse.async = true;
+                gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                    '//cse.google.com/cse.js?cx=' + cx;
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(gcse, s);
+              })();
+
+            <gcse:search></gcse:search>
