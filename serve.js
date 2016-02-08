@@ -31,16 +31,16 @@ Metalsmith(__dirname)
   .source('./src')
   .use(collections({
     walks: {
-      pattern: 'walks/*.md',
+      pattern: 'walks/*/*.md',
       sortBy: 'date',
       reverse: true
     }
   }))
   .use(markdown())
   .use(excerpts())
-  .use(branch('walks/**.html')
+  .use(branch('walks/*/*.html')
     .use(permalinks({
-      pattern:':collection/:title'
+      pattern:':collection/:title/'
     }))
   )
   .use(branch('**.html')
@@ -64,13 +64,12 @@ Metalsmith(__dirname)
     moment: moment
   }))
   .use(sass({
-    outputDir: function(originalPath) { 
-        // this will change scss/some/path to css/some/path 
+    outputDir: function(originalPath) {
+        // this will change scss/some/path to css/some/path
         return originalPath.replace("scss", "css");
     },
     outputStyle: "compressed"
   }))
-
   .use(serve({
     port: 8080,
     http_error_files: {
@@ -84,7 +83,7 @@ Metalsmith(__dirname)
       },
     livereload: true
   }))
-  .use(plugin)
+
   .destination('./build')
   .build(function(err){
   	if (err) throw err;

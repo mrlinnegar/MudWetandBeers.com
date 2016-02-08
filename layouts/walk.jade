@@ -27,7 +27,7 @@ block content
           if tags && tags.length > 0
             .tags
               each tag, index in tags
-                a(href="/#{tag.toLowerCase()}").tag #{tag}
+                a(href="/#{tag.toLowerCase().replace(' ','-')}").tag #{tag}
                 if index != tags.length -1
                   | ,
 

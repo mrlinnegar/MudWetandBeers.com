@@ -24,16 +24,16 @@ Metalsmith(__dirname)
   .source('./src')
   .use(collections({
     walks: {
-      pattern: 'walks/*.md',
+      pattern: 'walks/*/*.md',
       sortBy: 'date',
       reverse: true
     }
   }))
   .use(markdown())
   .use(excerpts())
-  .use(branch('walks/**.html')
+  .use(branch('walks/*/*.html')
     .use(permalinks({
-      pattern:':collection/:title'
+      pattern:':collection/:title/'
     }))
   )
   .use(branch('**.html')
@@ -50,15 +50,15 @@ Metalsmith(__dirname)
     pathPage: ':tag/:num/index.html',
     perPage: 2,
     layout: 'tag.jade',
-    slug: function(tag) { return tag.toLowerCase() }
-  })) 
+    slug: function(tag) { return tag.toLowerCase().replace(' ','-'); }
+  }))
   .use(layouts({
     engine: 'jade',
     moment: moment
   }))
   .use(sass({
-    outputDir: function(originalPath) { 
-        // this will change scss/some/path to css/some/path 
+    outputDir: function(originalPath) {
+        // this will change scss/some/path to css/some/path
         return originalPath.replace("scss", "css");
     },
     outputStyle: "compressed"

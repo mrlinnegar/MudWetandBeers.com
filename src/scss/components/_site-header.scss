@@ -12,19 +12,12 @@
 
 .Site--title {
   color: white;
-  text-shadow: 0 0 10px black;
+  text-shadow: 0 0 15px black;
   font-variant: small-caps;
   margin: 0 30px;
-  text-align: left;
 
-  @include rem-font-size(2.5);
-  span {
-    display: block;
+  @include rem-font-size(7);
 
-    &.small {
-      @include rem-font-size(2);
-    }
-  }
 }
 
 .Site--lead {
