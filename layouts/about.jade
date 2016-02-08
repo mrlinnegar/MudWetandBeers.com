@@ -2,16 +2,22 @@
 extends page
 
 block content
+
   section
     .Grid
       .row
-        .Grid--cell
+        .gr-12
+          h1.Article--title!= title
+
+    .Grid
+      .row
+        .gr-12
           div!= contents
 
-          h3 Build Number: 
+          h3 Build Number:
             em!= site.build_number
             span .
 
-          h3 Last Built: 
+          h3 Last Built:
             em!= moment(site.build_time).format("h:mma D MMM YYYY")
-            span .    
+            span .

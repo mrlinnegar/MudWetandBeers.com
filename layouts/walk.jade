@@ -4,26 +4,26 @@ block head
   section
     .Grid
       .row
-        .Grid--cell
+        .gr-12
           a.Site--home-link(href='/') MudWetandBeers.com
 
 block content
   section
     .Grid
       .row
-        .Grid--cell
+        .gr-12
           h1.Article--title!= title
 
   section
     .Grid
       .row
-        .Grid--cell
+        .gr-12
           div.details #{moment(publishDate).format("D MMM YYYY")}
 
   section
     .Grid
       .row
-        .Grid--cell
+        .gr-12
           if tags && tags.length > 0
             .tags
               each tag, index in tags
@@ -33,14 +33,13 @@ block content
 
     .Grid
       .row
-        .Grid--cell!= contents
+        .gr-12!= contents
 
     .Grid
       .row
-        .Grid--cell
-          #map
+        #map
 
     .Grid
       .row
-        .Grid--cell
+        .gr-12
          By #{author}

@@ -38,6 +38,9 @@ $settings : (
     max-width : 1024px
 ) ) ;
 
+@include gridle_register_state ( desktop , (
+    min-width : 1200px
+) ) ;
 
 // generate classes :
 @include gridle_generate_classes ( );
@@ -50,6 +53,13 @@ body {
 .Grid {
     max-width : 1200px;
     margin : 0 auto;
+}
+
+.row {
+   @media screen and (max-width: 1200px) {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
 }
 
 

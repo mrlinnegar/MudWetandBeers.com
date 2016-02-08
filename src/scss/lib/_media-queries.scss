@@ -16,12 +16,6 @@
   }
 }
 
-@mixin media-query-greenhouse-mobile {
-  @media screen and (min-width: 640px) {
-    @content;
-  }
-}
-
 @mixin media-query-portable {
   @media screen and (min-width: 800px) {
     @content;

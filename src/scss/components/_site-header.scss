@@ -11,11 +11,20 @@
 }
 
 .Site--title {
-  @include rem-font-size(7);
   color: white;
   text-shadow: 0 0 10px black;
   font-variant: small-caps;
   margin: 0 30px;
+  text-align: left;
+
+  @include rem-font-size(2.5);
+  span {
+    display: block;
+
+    &.small {
+      @include rem-font-size(2);
+    }
+  }
 }
 
 .Site--lead {
