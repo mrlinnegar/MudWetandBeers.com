@@ -9,6 +9,7 @@ var Metalsmith = require('metalsmith'),
   collections = require('metalsmith-collections'),
   excerpts = require('metalsmith-excerpts'),
   tags = require('./lib/metalsmith-tag-edit.js'),
+  imagemin = require('metalsmith-imagemin');
   moment = require('moment');
 
 module.exports = Metalsmith(__dirname)
@@ -62,5 +63,8 @@ module.exports = Metalsmith(__dirname)
         return originalPath.replace("scss", "css");
     },
     outputStyle: "compressed"
+  }))
+  .use(imagemin({
+    optimizationLevel: 3
   }))
   .destination('./build');
