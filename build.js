@@ -9,7 +9,8 @@ var Metalsmith = require('metalsmith'),
   collections = require('metalsmith-collections'),
   excerpts = require('metalsmith-excerpts'),
   tags = require('./lib/metalsmith-tag-edit.js'),
-  imagemin = require('metalsmith-imagemin');
+  imagemin = require('metalsmith-imagemin'),
+  sitemap = require('metalsmith-sitemap'),
   moment = require('moment');
 
 module.exports = Metalsmith(__dirname)
@@ -67,4 +68,5 @@ module.exports = Metalsmith(__dirname)
   .use(imagemin({
     optimizationLevel: 3
   }))
+  .use(sitemap({hostname: 'http://mudwetandbeers.com'}))
   .destination('./build');
