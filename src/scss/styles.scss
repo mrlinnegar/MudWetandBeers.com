@@ -6,6 +6,7 @@
 @import "components/site-header";
 @import "components/site-navigation";
 @import "components/footer";
+@import "components/map";
 
 $settings : (
     context : 12,           // number of columns in your grid
@@ -87,9 +88,4 @@ body {
 .Article--title {
   font-size: 4em;
   margin: 0;
-}
-
-#map {
-  height: 400px;
-  width: 100%;
 }
