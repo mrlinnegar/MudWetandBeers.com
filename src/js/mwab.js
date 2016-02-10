@@ -1,5 +1,10 @@
 var mwab = mwab || {};
 
+
+mwab.loadData = function(){
+  return $.getJSON('/js/dummy_points.json').then(function(data){ return data; });
+};
+
 mwab.pointService =
 { getPointData : function(){
     var data = {};
@@ -69,7 +74,12 @@ mwab.pointService =
 
 mwab.lineStyle = {strokeColor: "#0000CD", strokeOpacity: 0.5, strokeWidth: 4.5};
 
-mwab.mapBuilder = function(){
+
+mwab.renderMap = function(){
+  mwab.loadData().then(mwab.mapBuilder)
+}
+
+mwab.mapBuilder = function(pointData){
 //variables for routes
 var linesLayer, points, lineFeature, lineString, routeMarkersLayer, routepos, routesize, routeoffset, routeicon;
 
@@ -83,9 +93,8 @@ setglobaloptions();
 linesLayer = osMap.getVectorLayer();
 // Set up layer for route markers
 routeMarkersLayer = new OpenLayers.Layer.Markers("Route Markers");
-var points = new Array();
+points = new Array();
 //make a route
-var pointData = mwab.pointService.getPointData();
 osMap.setCenter(new OpenSpace.MapPoint(pointData.center.e, pointData.center.n),7);
 
 for(var i = 0, len = pointData.route.length; i < len; i++){
@@ -114,7 +123,7 @@ osMap.addLayer(routeMarkersLayer);
 
 mwab.loadMap = function(){
   if(document.getElementById('map')){
-    this.mapBuilder();
+    this.renderMap();
   }
 };
 

@@ -30,16 +30,27 @@ block content
                 a(href="/#{tag.toLowerCase().replace(' ','-')}").tag #{tag}
                 if index != tags.length -1
                   | ,
+    if gpx
+      .Grid
+        .row
+          .gr-12
+            a(href="#{gpx}") Download GPX file
 
     .Grid
       .row
         .gr-12!= contents
 
-    .Grid
-      .row
-        #map
+    if gpx
+      .Grid
+        .row
+          #map
 
     .Grid
       .row
         .gr-12
          By #{author}
+
+    script.
+      var pageMeta = {
+        gpx : '#{gpx}'
+      };
