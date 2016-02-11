@@ -4,6 +4,9 @@ build: clean
 clean:
 	rm -rf build
 
+test:
+	jasmine
+
 deploy:
 	node scripts/deploy.js
 
