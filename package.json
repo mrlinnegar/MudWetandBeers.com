@@ -19,6 +19,7 @@
   "devDependencies": {
     "harmonize": "^1.4.4",
     "jade": "^1.11.0",
+    "jasmine": "^2.4.1",
     "metalsmith": "^2.1.0",
     "metalsmith-branch": "0.0.4",
     "metalsmith-collections": "^0.7.0",
