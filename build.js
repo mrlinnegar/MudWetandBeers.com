@@ -11,7 +11,52 @@ var Metalsmith = require('metalsmith'),
   tags = require('./lib/metalsmith-tag-edit.js'),
   imagemin = require('metalsmith-imagemin'),
   sitemap = require('metalsmith-sitemap'),
-  moment = require('moment');
+  drafts = require('metalsmith-drafts'),
+  moment = require('moment')
+  LatLon = require('./node_modules/geodesy/npm.js').LatLonEllipsoidal,
+  OsGridRef = require('./node_modules/geodesy/npm.js').OsGridRef;
+
+
+
+var my_plugin = function (options) {
+
+    var parser = require("xml2json");
+
+    function isGPX(filename){
+      var pattern = /\.gpx/;
+      return pattern.test(filename);
+    }
+
+    function toJSON(xml){
+      return parser.toJson(xml, {"object":true});
+    }
+
+    return function (files, metalsmith, done) {
+        // Does nothing and calls done() to tell Metalsmith it has finished
+        Object.keys(files).forEach(function(file){
+            if(!isGPX(file))
+              return;
+
+            var newFile = {};//files[file];
+            var xml = files[file].contents.toString();
+            var json = toJSON(xml);
+            var track = json.gpx.trk.trkseg.trkpt;
+            var grid_refs = [];
+            for(var i = 0, l = track.length; i < l; i++){
+              var ll = new LatLon(track[i].lat, track[i].lon);
+              grid_refs.push(OsGridRef.latLonToOsGrid(ll));
+            }
+
+            newFile.contents = new Buffer(JSON.stringify(grid_refs), "utf-8");
+            var fileNameData = file.split("/");
+            fileNameData[fileNameData.length - 1] = "route.json";
+            var newFilename = fileNameData.join("/");
+            files[newFilename] = newFile;
+        });
+        done();
+    };
+};
+
 
 module.exports = Metalsmith(__dirname)
   .metadata({
@@ -24,6 +69,7 @@ module.exports = Metalsmith(__dirname)
     }
   })
   .source('./src')
+  .use(drafts())
   .use(collections({
     walks: {
       pattern: 'walks/*/*.md',
@@ -54,6 +100,7 @@ module.exports = Metalsmith(__dirname)
     layout: 'tag.jade',
     slug: function(tag) { return tag.toLowerCase().replace(' ','-'); }
   }))
+  .use(my_plugin())
   .use(layouts({
     engine: 'jade',
     moment: moment

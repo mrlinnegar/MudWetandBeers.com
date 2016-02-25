@@ -5,7 +5,7 @@ var watch = require('metalsmith-watch'),
 site.use(serve({
     port: 8080,
     http_error_files: {
-      404: "/page-not-found/"
+      404: "/page-not-found/index.html"
     }
   }))
   .use(watch({

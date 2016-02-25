@@ -14,14 +14,10 @@ block content
         .gr-12
           h1.Article--title!= title
 
-  section
-    .Grid
       .row
         .gr-12
           div.details #{moment(publishDate).format("D MMM YYYY")}
 
-  section
-    .Grid
       .row
         .gr-12
           if tags && tags.length > 0
@@ -31,11 +27,11 @@ block content
                 if index != tags.length -1
                   | ,
     if gpx
-      .Grid
-        .row
-          .gr-12
-            a(href="#{gpx}") Download GPX file
+      .row
+        .gr-12
+          a(href="#{gpx}") Download GPX file
 
+  section
     .Grid
       .row
         .gr-12!= contents
