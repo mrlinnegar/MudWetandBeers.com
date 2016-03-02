@@ -65,27 +65,46 @@ body {
 
 
 .Post-item {
+  text-align: center;
 
   .title {
     font-family: 'UmbrageRegular';
     @include rem-font-size(2.5);
 
     a {
-      color: black;
+      color: #44422D;
     }
   }
 }
 
 
+.Site--top-bar {
+  background-color: #44422D;
+}
 
 .Site--home-link {
   font-family: 'UmbrageRegular';
   font-variant: small-caps;
   text-decoration: none;
-  color: black;
+  color: #ECE9E0;
+  display: inline-block;
+  padding: 10px 0;
 }
 
-.Article--title {
-  font-size: 4em;
-  margin: 0;
+.Article--header-background {
+  background-position: center;
+  background-size: cover;
+  background-repeat:no-repeat;
+  min-height: 500px;
 }
+.Article--header {
+  display: flex;
+  aligh-items: flex-end;
+  min-height: 600px;
+}
+.Article--title {
+  font-size: 5em;
+  margin: 0;
+  padding: 0.8em 0;
+}
+

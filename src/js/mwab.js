@@ -13,10 +13,10 @@ mwab.renderMap = function(){
   mwab.loadData().then(mwab.mapBuilder)
 }
 
-mwab.mapBuilder = function(pointData){
+mwab.mapBuilder = function(data){
 //variables for routes
 var linesLayer, points, lineFeature, lineString, routeMarkersLayer, routepos, routesize, routeoffset, routeicon;
-
+var pointData = data.route;
 //initiate the map
 var options = {resolutions: [100, 50, 25, 10, 5]};
 osMap = new OpenSpace.Map('map', options);
@@ -29,7 +29,7 @@ linesLayer = osMap.getVectorLayer();
 routeMarkersLayer = new OpenLayers.Layer.Markers("Route Markers");
 points = new Array();
 //make a route
-osMap.setCenter(new OpenSpace.MapPoint(pointData[0].easting, pointData[0].northing),7);
+osMap.setCenter(new OpenSpace.MapPoint(data.center.easting,data.center.northing),6);
 
 for(var i = 0, len = pointData.length; i < len; i++){
   var point = pointData[i];

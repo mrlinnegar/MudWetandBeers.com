@@ -1,17 +1,17 @@
 //- post.jade
 extends page
 block head
-  section
+  section.Site--top-bar
     .Grid
       .row
         .gr-12
           a.Site--home-link(href='/') MudWetandBeers.com
 
 block content
-  section
+  section.Article--header-background(style="background-image:url(#{image});")
     .Grid
       .row
-        .gr-12
+        .gr-12.Article--header
           h1.Article--title!= title
 
       .row
@@ -26,10 +26,10 @@ block content
                 a(href="/#{tag.toLowerCase().replace(' ','-')}").tag #{tag}
                 if index != tags.length -1
                   | ,
-    if gpx
-      .row
-        .gr-12
-          a(href="#{gpx}") Download GPX file
+      if gpx
+        .row
+          .gr-12
+            a(href="#{gpx}") Download GPX file
 
   section
     .Grid

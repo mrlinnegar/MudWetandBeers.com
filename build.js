@@ -41,13 +41,31 @@ var my_plugin = function (options) {
             var xml = files[file].contents.toString();
             var json = toJSON(xml);
             var track = json.gpx.trk.trkseg.trkpt;
+            var data = {};
             var grid_refs = [];
+            var lats = [];
+            var lons = [];
+
             for(var i = 0, l = track.length; i < l; i++){
               var ll = new LatLon(track[i].lat, track[i].lon);
+              lats.push(track[i].lat);
+              lons.push(track[i].lon);
               grid_refs.push(OsGridRef.latLonToOsGrid(ll));
             }
 
-            newFile.contents = new Buffer(JSON.stringify(grid_refs), "utf-8");
+            var maxLat = Math.max.apply(null, lats);
+            var minLat = Math.min.apply(null, lats);
+            var maxLon = Math.max.apply(null, lons);
+            var minLon = Math.min.apply(null, lons);
+
+
+            var centerLat = ((maxLat - minLat)/2) + minLat;
+            var centerLon = ((maxLon - minLon)/2) + minLon;
+
+            data.center = OsGridRef.latLonToOsGrid(new LatLon(centerLat, centerLon));
+
+            data.route = grid_refs
+            newFile.contents = new Buffer(JSON.stringify(data), "utf-8");
             var fileNameData = file.split("/");
             fileNameData[fileNameData.length - 1] = "route.json";
             var newFilename = fileNameData.join("/");
