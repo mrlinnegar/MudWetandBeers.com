@@ -114,9 +114,9 @@ module.exports = Metalsmith(__dirname)
     handle: 'tags',
     path: ':tag/index.html',
     pathPage: ':tag/:num/index.html',
-    perPage: 2,
+    perPage: 10,
     layout: 'tag.jade',
-    slug: function(tag) { return tag.toLowerCase().replace(' ','-'); }
+    slug: function(tag) { return tag.toLowerCase().split(' ').join('-'); }
   }))
   .use(my_plugin())
   .use(layouts({

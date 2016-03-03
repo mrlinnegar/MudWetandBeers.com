@@ -7,6 +7,10 @@ block head
     p.Site--lead=site.lead
 
 block content
+  each tag in Object.keys(tags)
+    a(href="/#{tags[tag].urlSafe}/")
+      =tag
+
   section
     .Grid
       div(class="row row@mobile")

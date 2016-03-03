@@ -1,8 +1,16 @@
 //- tag.jade
 extends page
-block content
+block head
+  section.Site--top-bar
+    .Grid
+      .row
+        .gr-12
+          a.Site--home-link(href='/') MudWetandBeers.com
 
-  h1!= title
+  section.Site--header
+    h1.Site--title=title
+
+block content
 
   section
     .Grid

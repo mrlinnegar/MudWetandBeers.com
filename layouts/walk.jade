@@ -14,6 +14,12 @@ block content
         .gr-12.Article--header
           h1.Article--title!= title
 
+
+  if gpx
+        #map
+
+  section
+    .Grid
       .row
         .gr-12
           div.details #{moment(publishDate).format("D MMM YYYY")}
@@ -23,7 +29,7 @@ block content
           if tags && tags.length > 0
             .tags
               each tag, index in tags
-                a(href="/#{tag.toLowerCase().replace(' ','-')}").tag #{tag}
+                a(href="/#{tag.toLowerCase().split(' ').join('-')}").tag #{tag}
                 if index != tags.length -1
                   | ,
       if gpx
@@ -36,15 +42,6 @@ block content
       .row
         .gr-12!= contents
 
-    if gpx
-      .Grid
-        .row
-          #map
-
-    .Grid
-      .row
-        .gr-12
-         By #{author}
 
     script.
       var pageMeta = {

@@ -18,18 +18,29 @@ mwab.mapBuilder = function(data){
 var linesLayer, points, lineFeature, lineString, routeMarkersLayer, routepos, routesize, routeoffset, routeicon;
 var pointData = data.route;
 //initiate the map
-var options = {resolutions: [100, 50, 25, 10, 5]};
+var options = {resolutions: [100, 50, 25, 10, 5], controls:[]};
+//OpenLayers.Handler.MouseWheel = function(){};
+
 osMap = new OpenSpace.Map('map', options);
 
-//configure map options (basicmap.js)
-setglobaloptions();
+
+var nc = new OpenLayers.Control.Navigation();
+  nc.activate = function() {
+  this.dragPan.activate();
+  // This line is removed: this.wheelHandler.activate();
+  return
+  OpenLayers.Control.prototype.activate.apply(this,arguments);
+};
+
+osMap.addControl(nc);
+
 //set the center of the map and the zoom level
 linesLayer = osMap.getVectorLayer();
 // Set up layer for route markers
 routeMarkersLayer = new OpenLayers.Layer.Markers("Route Markers");
 points = new Array();
 //make a route
-osMap.setCenter(new OpenSpace.MapPoint(data.center.easting,data.center.northing),6);
+osMap.setCenter(new OpenSpace.MapPoint(data.center.easting,data.center.northing), 6);
 
 for(var i = 0, len = pointData.length; i < len; i++){
   var point = pointData[i];

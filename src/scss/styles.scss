@@ -79,7 +79,9 @@ body {
 
 
 .Site--top-bar {
-  background-color: #44422D;
+  background-color: #4D4D4D;
+  border-top: 1px solid darken(#4D4D4D, 20%);
+  border-bottom: 1px solid lighten(#4D4D4D, 20%);
 }
 
 .Site--home-link {
@@ -95,16 +97,22 @@ body {
   background-position: center;
   background-size: cover;
   background-repeat:no-repeat;
+  background-color: darken( #F4F4F4 ,20%);
   min-height: 500px;
 }
 .Article--header {
   display: flex;
-  aligh-items: flex-end;
+  align-items: flex-end;
   min-height: 600px;
+
 }
+
 .Article--title {
   font-size: 5em;
   margin: 0;
   padding: 0.8em 0;
+  font-variant: small-caps;
+  text-shadow: 0 0 15px black;
+  color: white;
 }
 

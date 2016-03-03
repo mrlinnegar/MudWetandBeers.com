@@ -3,7 +3,7 @@ title: Stickle Tarn
 author: James
 publishDate: 2012-02-19
 layout: walk.jade
-tags: Lake District
+tags: The Lake District
 draft: true
 ---
 
