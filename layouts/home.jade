@@ -2,22 +2,47 @@
 extends layout
 
 block head
-  section.Site--header
-    h1.Site--title=site.title
+
+  section.Site--header(style="background-image:url(#{backgroundImage})")
+    h1.Site--title
+      span Mud
+      span Wet
+      span.and and
+      span Beers.com
     p.Site--lead=site.lead
 
+  section.Site--navigation
+    .Grid
+      .row
+        .gr-12
+          a(href="/about/") About
+
 block content
-  each tag in Object.keys(tags)
-    a(href="/#{tags[tag].urlSafe}/")
-      =tag
 
   section
     .Grid
-      div(class="row row@mobile")
-        each walk in collections.walks
-          div(class="gr-12").Post-item
-            h5.title
-              a(href="/#{walk.path}")
-                =walk.title
-            div !{walk.excerpt}
+      - for (var i = 0; i < collections.walks.length; i = i + 3) {
+        .row
+          if collections.walks[i]
+            div(class="gr-4").article-card
+              .article-card--image
+                img(src="#{collections.walks[i].path}#{collections.walks[i].image}")
+              h2.article-card--title
+                a(href="/#{collections.walks[i].path}")
+                  =collections.walks[i].title
+          if collections.walks[i+1]
+            div(class="gr-4").article-card
+              .article-card--image
+                img(src="#{collections.walks[i+1].path}#{collections.walks[i+1].image}")
+              h2.article-card--title
+                a(href="/#{collections.walks[i+1].path}")
+                  =collections.walks[i+1].title
+          if collections.walks[i+2]
+            div(class="gr-4").article-card
+              .article-card--image
+                img(src="#{collections.walks[i+2].path}#{collections.walks[i+2].image}")
+              h2.article-card--title
+                a(href="/#{collections.walks[i+2].path}")
+                  =collections.walks[i+2].title
 
+      - }

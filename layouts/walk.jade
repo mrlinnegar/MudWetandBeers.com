@@ -14,28 +14,38 @@ block content
         .gr-12.Article--header
           h1.Article--title!= title
 
-
-  if gpx
-        #map
-
   section
     .Grid
       .row
         .gr-12
-          div.details #{moment(publishDate).format("D MMM YYYY")}
-
-      .row
-        .gr-12
-          if tags && tags.length > 0
-            .tags
+          .Article--properties
+            if tags && tags.length > 0
+              strong.Article--property
+                | Region:
               each tag, index in tags
-                a(href="/#{tag.toLowerCase().split(' ').join('-')}").tag #{tag}
+                a(href="/region/#{tag.toLowerCase().split(' ').join('-')}").Article--property-value #{tag}
                 if index != tags.length -1
                   | ,
-      if gpx
+            if maps && maps.length > 0
+              strong.Article--property
+                | Maps:
+              each map, index in maps
+                a(href="/map/#{map.toLowerCase().split(' ').join('-')}").Article--property-value #{map}
+                if index != maps.length -1
+                  | ,
+
+            if grade && grade.length > 0
+              strong.Article--property
+                | Grade:
+              each gr, index in grade
+                a(href="/grade/#{gr.toLowerCase().split(' ').join('-')}").Article--property-value #{gr}
+
+  if gpx
+    section
+      .Grid
         .row
           .gr-12
-            a(href="#{gpx}") Download GPX file
+            #map
 
   section
     .Grid

@@ -89,6 +89,11 @@ module.exports = Metalsmith(__dirname)
   .source('./src')
   .use(drafts())
   .use(collections({
+    featured: {
+      pattern: 'walks/*/*.md',
+      sortBy: 'featured',
+      limit: 10
+    },
     walks: {
       pattern: 'walks/*/*.md',
       sortBy: 'date',
@@ -99,7 +104,7 @@ module.exports = Metalsmith(__dirname)
   .use(excerpts())
   .use(branch('walks/*/*.html')
     .use(permalinks({
-      pattern:':collection/:title/'
+      pattern:'walks/:title/'
     }))
   )
   .use(branch('**.html')
@@ -112,8 +117,26 @@ module.exports = Metalsmith(__dirname)
   .use(tags({
     title: "Walks in :tag",
     handle: 'tags',
-    path: ':tag/index.html',
-    pathPage: ':tag/:num/index.html',
+    path: 'region/:tag/index.html',
+    pathPage: 'region/:tag/:num/index.html',
+    perPage: 10,
+    layout: 'tag.jade',
+    slug: function(tag) { return tag.toLowerCase().split(' ').join('-'); }
+  }))
+  .use(tags({
+    title: ":tag Walks",
+    handle: 'grade',
+    path: 'grade/:tag/index.html',
+    pathPage: 'grade/:tag/:num/index.html',
+    perPage: 10,
+    layout: 'tag.jade',
+    slug: function(tag) { return tag.toLowerCase().split(' ').join('-'); }
+  }))
+  .use(tags({
+    title: "Walks in map :tag",
+    handle: 'maps',
+    path: 'map/:tag/index.html',
+    pathPage: 'map/:tag/:num/index.html',
     perPage: 10,
     layout: 'tag.jade',
     slug: function(tag) { return tag.toLowerCase().split(' ').join('-'); }

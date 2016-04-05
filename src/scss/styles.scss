@@ -1,5 +1,6 @@
 @import "lib/normalize";
 @import "lib/gridle/gridle";
+@import "base/colours";
 @import "base/typography";
 @import "base/imagery";
 //@import "components/grid";
@@ -7,6 +8,7 @@
 @import "components/site-navigation";
 @import "components/footer";
 @import "components/map";
+@import "components/article-card";
 
 $settings : (
     context : 12,           // number of columns in your grid
@@ -48,8 +50,13 @@ $settings : (
 
 
 body {
-    background-color: #F4F4F4;
+
 }
+
+section {
+  padding: 24px 0;
+}
+
 // manage container width :
 .Grid {
     max-width : 1200px;
@@ -64,24 +71,9 @@ body {
 }
 
 
-.Post-item {
-  text-align: center;
-
-  .title {
-    font-family: 'UmbrageRegular';
-    @include rem-font-size(2.5);
-
-    a {
-      color: #44422D;
-    }
-  }
-}
-
-
 .Site--top-bar {
-  background-color: #4D4D4D;
-  border-top: 1px solid darken(#4D4D4D, 20%);
-  border-bottom: 1px solid lighten(#4D4D4D, 20%);
+  background-color: $dark;
+  padding: 0;
 }
 
 .Site--home-link {
@@ -116,3 +108,18 @@ body {
   color: white;
 }
 
+.Article--properties {
+  background-color: $panel;
+  padding: 0.8em;
+  color: white;
+  margin-top: -40px;
+}
+
+.Article--property {
+  color: $dark;
+  padding: 0 0.2em;
+}
+
+.Article--property-value {
+  color: white;
+}
