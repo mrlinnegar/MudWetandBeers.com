@@ -119,7 +119,7 @@ module.exports = Metalsmith(__dirname)
     handle: 'tags',
     path: 'region/:tag/index.html',
     pathPage: 'region/:tag/:num/index.html',
-    perPage: 10,
+    perPage: 9,
     layout: 'tag.jade',
     slug: function(tag) { return tag.toLowerCase().split(' ').join('-'); }
   }))
@@ -128,7 +128,7 @@ module.exports = Metalsmith(__dirname)
     handle: 'grade',
     path: 'grade/:tag/index.html',
     pathPage: 'grade/:tag/:num/index.html',
-    perPage: 10,
+    perPage: 9,
     layout: 'tag.jade',
     slug: function(tag) { return tag.toLowerCase().split(' ').join('-'); }
   }))
@@ -137,7 +137,7 @@ module.exports = Metalsmith(__dirname)
     handle: 'maps',
     path: 'map/:tag/index.html',
     pathPage: 'map/:tag/:num/index.html',
-    perPage: 10,
+    perPage: 9,
     layout: 'tag.jade',
     slug: function(tag) { return tag.toLowerCase().split(' ').join('-'); }
   }))

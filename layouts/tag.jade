@@ -14,12 +14,22 @@ block content
 
   section
     .Grid
-      .row
-        each post in pagination.files
-          div.Post-item
-            h5.title
-              a(href="/#{post.path}")
-                =post.title
+      - for (var i = 0; i < pagination.files.length; i = i + 3) {
+        .row
+          if pagination.files[i]
+            - walk = pagination.files[i]
+            include partials/walk
+
+          if pagination.files[i+1]
+            - walk = pagination.files[i+1]
+            include partials/walk
+
+          if pagination.files[i+2]
+            - walk = pagination.files[i+2]
+            include partials/walk
+
+      - }
+
 
   section
     .Grid

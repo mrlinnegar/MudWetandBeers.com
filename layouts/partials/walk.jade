@@ -1,0 +1,11 @@
+div(class="gr-4")
+  a(href="/#{walk.path}").article-card
+
+    .article-card--image
+      img(src="/#{walk.path}#{walk.image}")
+
+    h2.article-card--title
+      =walk.title
+
+    p
+      =walk.grade

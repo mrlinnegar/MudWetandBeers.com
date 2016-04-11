@@ -18,25 +18,15 @@ block content
       - for (var i = 0; i < collections.walks.length; i = i + 3) {
         .row
           if collections.walks[i]
-            div(class="gr-4").article-card
-              .article-card--image
-                img(src="#{collections.walks[i].path}#{collections.walks[i].image}")
-              h2.article-card--title
-                a(href="/#{collections.walks[i].path}")
-                  =collections.walks[i].title
+            - walk = collections.walks[i]
+            include partials/walk
+
           if collections.walks[i+1]
-            div(class="gr-4").article-card
-              .article-card--image
-                img(src="#{collections.walks[i+1].path}#{collections.walks[i+1].image}")
-              h2.article-card--title
-                a(href="/#{collections.walks[i+1].path}")
-                  =collections.walks[i+1].title
+            - walk = collections.walks[i+1]
+            include partials/walk
+
           if collections.walks[i+2]
-            div(class="gr-4").article-card
-              .article-card--image
-                img(src="#{collections.walks[i+2].path}#{collections.walks[i+2].image}")
-              h2.article-card--title
-                a(href="/#{collections.walks[i+2].path}")
-                  =collections.walks[i+2].title
+            - walk = collections.walks[i+2]
+            include partials/walk
 
       - }

@@ -5,14 +5,20 @@
   background-position: center;
   background-repeat: no-repeat;
 
+  color: #44422D;
+  text-decoration: none;
+
+  &:hover {
+    color: lighten(#44422D, 20%);
+  }
+
   .article-card--title {
     font-family: 'UmbrageRegular';
     font-variant: small-caps;
 
     @include rem-font-size(2.5);
-    a {
-      color: #44422D;
-    }
+
+
   }
   .article-card--image {
     overflow: hidden;

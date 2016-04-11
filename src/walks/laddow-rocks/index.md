@@ -11,10 +11,10 @@ map: OL1
 grade: Medium
 ---
 
-![Something](images/IMG_1224.jpg)
-![Something](images/IMG_1227.jpg)
-![Something](images/IMG_1229.jpg)
-![Something](images/IMG_1231.jpg)
-![Something](images/IMG_1233.jpg)
-![Something](images/IMG_1234.jpg)
-![Something](images/IMG_1238.jpg)
+![Something](images/IMG_1224.JPG)
+![Something](images/IMG_1227.JPG)
+![Something](images/IMG_1229.JPG)
+![Something](images/IMG_1231.JPG)
+![Something](images/IMG_1233.JPG)
+![Something](images/IMG_1234.JPG)
+![Something](images/IMG_1238.JPG)
