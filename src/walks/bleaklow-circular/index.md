@@ -7,9 +7,10 @@ gpx: route.gpx
 layout: walk.jade
 region: The Peak District
 image: images/IMG_4678.jpg
+lead: Taking in the views over Glossop from Bleaklow
+
 ---
 
-Taking in the views over Glossop from Bleaklow
 
 ![Something](images/IMG_4678.jpg)
 ![Something](images/IMG_4694.jpg)

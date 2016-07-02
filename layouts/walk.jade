@@ -24,8 +24,7 @@ block content
                 | Region:
               each tag, index in region
                 a(href="/region/#{tag.toLowerCase().split(' ').join('-')}").Article--property-value #{tag}
-                if index != tags.length -1
-                  | ,
+
             if maps && maps.length > 0
               strong.Article--property
                 | Maps:

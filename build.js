@@ -33,6 +33,7 @@ var my_plugin = function (options) {
     }
 
     return function (files, metalsmith, done) {
+
         // Does nothing and calls done() to tell Metalsmith it has finished
         Object.keys(files).forEach(function(file){
             if(!isGPX(file))
@@ -95,8 +96,8 @@ module.exports = Metalsmith(__dirname)
   .use(collections({
     featured: {
       pattern: 'walks/*/*.md',
-      sortBy: 'featured',
-      limit: 10
+      sortBy: 'date',
+      limit: 5
     },
     walks: {
       pattern: 'walks/*/*.md',
@@ -121,6 +122,7 @@ module.exports = Metalsmith(__dirname)
   .use(tags({
     title: "Walks in :tag",
     handle: 'region',
+    metadataKey: 'region',
     path: 'region/:tag/index.html',
     pathPage: 'region/:tag/:num/index.html',
     perPage: 9,
@@ -139,6 +141,7 @@ module.exports = Metalsmith(__dirname)
   .use(tags({
     title: "Walks in map :tag",
     handle: 'maps',
+    metadataKey: 'map',
     path: 'map/:tag/index.html',
     pathPage: 'map/:tag/:num/index.html',
     perPage: 9,

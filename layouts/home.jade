@@ -15,14 +15,30 @@ block content
 
   section
     .Grid
-      - for (var i = 0; i < collections.walks.length; i = i + 2) {
-        .row
-          if collections.walks[i]
-            - walk = collections.walks[i]
-            include partials/walk
+      .row
+        div(class="gr-8 gr-12@tablet")
+          .row
+            div(class="gr-12")
+              - walk = collections.featured[0]
+              include partials/article_card
 
-          if collections.walks[i+1]
-            - walk = collections.walks[i+1]
-            include partials/walk
+          - for (var i = 1; i < collections.featured.length; i=i+2) {
+            .row
+              div(class="gr-6")
+                - walk = collections.featured[i]
+                include partials/article_card
+              div(class="gr-6")
+                - walk = collections.featured[i+1]
+                include partials/article_card
 
-      - }
+          - }
+
+        div(class="gr-4 gr-12@tablet")
+          h4 Regions
+          ul
+            - for (var r in region ) {
+              li
+                a(href="/region/#{region[r].urlSafe}/")
+                  =r
+            - }
+

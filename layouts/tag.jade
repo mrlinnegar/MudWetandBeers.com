@@ -16,22 +16,25 @@ block content
     .Grid
       - for (var i = 0; i < pagination.files.length; i = i + 2) {
         .row
+
           if pagination.files[i]
-            - walk = pagination.files[i]
-            include partials/walk
+            .gr-6
+              - walk = pagination.files[i]
+              include partials/article_card
 
           if pagination.files[i+1]
-            - walk = pagination.files[i+1]
-            include partials/walk
+            .gr-6
+              - walk = pagination.files[i+1]
+              include partials/article_card
       - }
 
 
   section
     .Grid
       .row
-        .gr-12
+        .gr-6
           if pagination.previous
             a(href="/#{pagination.previous.path.replace('index.html','')}") Previous
-
+        .gr-6
           if pagination.next
             a(href="/#{pagination.next.path.replace('index.html','')}") Next

@@ -4,6 +4,11 @@
   color: #44422D;
   text-decoration: none;
 
+  &:hover{
+    opacity: 0.8;
+    transform: all 0.3s ease;
+  }
+
   .article-card--title {
     font-family: 'UmbrageRegular';
     font-variant: small-caps;
@@ -16,21 +21,25 @@
     color: #cecece;
     padding: 5px;
     padding-left: 0;
+    @include rem-font-size(1.5);
   }
 
   .article-card--tag {
     color: #4D4D4D;
     padding: 5px;
     padding-left: 0;
+    @include rem-font-size(1.5);
   }
 
   .article-card--image {
     overflow: hidden;
-    width: 100%;
-    height: 200px;
+    height: 250px;
+    img {
+      width: 100%;
+    }
   }
 
   .article-card--leader {
-
+    @include rem-font-size(1.5);
   }
 }

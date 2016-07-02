@@ -1,0 +1,21 @@
+
+.article-card
+  .article-card--image
+    img(src="/#{walk.path}#{walk.image}")
+
+  a(href="/region/#{walk.regionUrlSafe}/").article-card--tag
+    =walk.region
+
+  span.article-card--date
+    =walk.publishDate
+
+  a(href="/#{walk.path}")
+    h2.article-card--title
+      =walk.title
+
+  p.article-card--leader
+    | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    | tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    | quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    | consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+
