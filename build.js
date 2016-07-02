@@ -3,6 +3,7 @@
 var Metalsmith = require('metalsmith'),
  branch = require('metalsmith-branch'),
   sass = require('metalsmith-sass'),
+  dateFormatter = require('metalsmith-date-formatter'),
   layouts = require('metalsmith-layouts'),
   markdown   = require('metalsmith-markdown'),
   permalinks = require('metalsmith-permalinks'),
@@ -88,6 +89,9 @@ module.exports = Metalsmith(__dirname)
   })
   .source('./src')
   .use(drafts())
+  .use(dateFormatter({
+    dates: [ { key: 'publishDate', format: 'MMM YYYY'}]
+  }))
   .use(collections({
     featured: {
       pattern: 'walks/*/*.md',
@@ -116,7 +120,7 @@ module.exports = Metalsmith(__dirname)
   )
   .use(tags({
     title: "Walks in :tag",
-    handle: 'tags',
+    handle: 'region',
     path: 'region/:tag/index.html',
     pathPage: 'region/:tag/:num/index.html',
     perPage: 9,

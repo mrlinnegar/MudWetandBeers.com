@@ -15,7 +15,7 @@ block content
 
   section
     .Grid
-      - for (var i = 0; i < collections.walks.length; i = i + 3) {
+      - for (var i = 0; i < collections.walks.length; i = i + 2) {
         .row
           if collections.walks[i]
             - walk = collections.walks[i]
@@ -23,10 +23,6 @@ block content
 
           if collections.walks[i+1]
             - walk = collections.walks[i+1]
-            include partials/walk
-
-          if collections.walks[i+2]
-            - walk = collections.walks[i+2]
             include partials/walk
 
       - }

@@ -3,7 +3,7 @@ title: Laddow Rocks
 author: James
 publishDate: 2016-04-10
 layout: walk.jade
-tags: The Peak District
+region: The Peak District
 gpx: laddow-rocks.gpx
 image: images/IMG_1233.JPG
 terrain: Uneaven rocks and bog

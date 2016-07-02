@@ -5,7 +5,7 @@ description:
 publishDate: 2012-02-19
 gpx: route.gpx
 layout: walk.jade
-region: Derbyshire
+region: The Peak District
 image: images/IMG_4678.jpg
 ---
 

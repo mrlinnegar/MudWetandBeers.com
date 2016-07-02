@@ -14,7 +14,7 @@ block content
 
   section
     .Grid
-      - for (var i = 0; i < pagination.files.length; i = i + 3) {
+      - for (var i = 0; i < pagination.files.length; i = i + 2) {
         .row
           if pagination.files[i]
             - walk = pagination.files[i]
@@ -23,11 +23,6 @@ block content
           if pagination.files[i+1]
             - walk = pagination.files[i+1]
             include partials/walk
-
-          if pagination.files[i+2]
-            - walk = pagination.files[i+2]
-            include partials/walk
-
       - }
 
 
@@ -36,7 +31,7 @@ block content
       .row
         .gr-12
           if pagination.previous
-            a(href="/#{pagination.previous.path}") Previous
+            a(href="/#{pagination.previous.path.replace('index.html','')}") Previous
 
           if pagination.next
-            a(href="/#{pagination.next.path}") Next
+            a(href="/#{pagination.next.path.replace('index.html','')}") Next

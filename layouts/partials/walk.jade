@@ -1,11 +1,18 @@
-div(class="gr-4")
-  a(href="/#{walk.path}").article-card
-
+div(class="gr-6")
+  .article-card
     .article-card--image
       img(src="/#{walk.path}#{walk.image}")
 
-    h2.article-card--title
-      =walk.title
+    a(href="/region/#{walk.regionUrlSafe}/").article-card--tag
+        =walk.region
 
-    p
-      =walk.grade
+    span.article-card--date
+      =walk.publishDate
+
+    a(href="/#{walk.path}")
+      h2.article-card--title
+        =walk.title
+
+    p.article-card--leader
+      =walk.leader
+

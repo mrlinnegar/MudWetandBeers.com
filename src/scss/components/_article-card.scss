@@ -1,16 +1,8 @@
 
 .article-card {
 
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
   color: #44422D;
   text-decoration: none;
-
-  &:hover {
-    color: lighten(#44422D, 20%);
-  }
 
   .article-card--title {
     font-family: 'UmbrageRegular';
@@ -18,12 +10,27 @@
 
     @include rem-font-size(2.5);
 
-
   }
+
+  .article-card--date {
+    color: #cecece;
+    padding: 5px;
+    padding-left: 0;
+  }
+
+  .article-card--tag {
+    color: #4D4D4D;
+    padding: 5px;
+    padding-left: 0;
+  }
+
   .article-card--image {
     overflow: hidden;
     width: 100%;
     height: 200px;
-    border: 1px solid #4D4D4D;
+  }
+
+  .article-card--leader {
+
   }
 }
