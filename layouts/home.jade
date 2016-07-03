@@ -40,5 +40,13 @@ block content
               li
                 a(href="/region/#{region[r].urlSafe}/")
                   =r
+                span (#{region[r].length})
+            - }
+          h4 Wainwright
+          ul
+            - for (var r in wainwright ) {
+              li
+                a(href="/wainwright/#{wainwright[r].urlSafe}/")
+                  =r
             - }
 

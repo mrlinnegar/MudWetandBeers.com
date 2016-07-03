@@ -130,6 +130,16 @@ module.exports = Metalsmith(__dirname)
     slug: function(tag) { return tag.toLowerCase().split(' ').join('-'); }
   }))
   .use(tags({
+    title: "Walks in :tag",
+    handle: 'wainwright',
+    metadataKey: 'wainwright',
+    path: 'wainwright/:tag/index.html',
+    pathPage: 'wainwright/:tag/:num/index.html',
+    perPage: 9,
+    layout: 'tag.jade',
+    slug: function(tag) { return tag.toLowerCase().split(' ').join('-'); }
+  }))
+  .use(tags({
     title: ":tag Walks",
     handle: 'grade',
     path: 'grade/:tag/index.html',

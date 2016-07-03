@@ -7,4 +7,5 @@ gpx: route.gpx
 layout: walk.jade
 region: The Lake District
 image: images/IMG_4854.jpg
+wainwright: Central Fells
 ---
