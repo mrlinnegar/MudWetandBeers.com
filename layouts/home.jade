@@ -36,11 +36,11 @@ block content
         div(class="gr-4 gr-12@tablet")
           h4 Regions
           ul
-            - for (var r in region ) {
+            - for (var r in regions ) {
               li
-                a(href="/region/#{region[r].urlSafe}/")
+                a(href="/region/#{regions[r].urlSafe}/")
                   =r
-                span (#{region[r].length})
+                span (#{regions[r].length})
             - }
           h4 Wainwright
           ul

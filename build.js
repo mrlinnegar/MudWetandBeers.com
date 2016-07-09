@@ -122,7 +122,7 @@ module.exports = Metalsmith(__dirname)
   .use(tags({
     title: "Walks in :tag",
     handle: 'region',
-    metadataKey: 'region',
+    metadataKey: 'regions',
     path: 'region/:tag/index.html',
     pathPage: 'region/:tag/:num/index.html',
     perPage: 9,

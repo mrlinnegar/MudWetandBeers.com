@@ -1,6 +1,26 @@
-footer {
-	text-align: center;
+.footer {
   color: white;
-  background-color: $dark;
+  background-color: $panel;
   padding: 24px 0;
+}
+
+.footer--list {
+  list-style-type: none;
+  padding:0;
+  margin:0;
+  @include rem-font-size(1.5);
+
+  li {
+    display: block;
+    padding: 10px 0;
+  }
+
+  a {
+    color: rgba(255,255,255,0.7);
+  }
+}
+
+.footer--copy {
+  text-align: center;
+  padding: 15px;
 }

@@ -18,38 +18,66 @@ block content
     .Grid
       .row
         .gr-12
-          .Article--properties
+          .Article--breadcrumb
+            a(href="/") Home
+            span /
             if region && region.length > 0
-              strong.Article--property
-                | Region:
               each tag, index in region
-                a(href="/region/#{tag.toLowerCase().split(' ').join('-')}").Article--property-value #{tag}
-
-            if maps && maps.length > 0
-              strong.Article--property
-                | Maps:
-              each map, index in maps
-                a(href="/map/#{map.toLowerCase().split(' ').join('-')}").Article--property-value #{map}
-                if index != maps.length -1
-                  | ,
-
-            if grade && grade.length > 0
-              strong.Article--property
-                | Grade:
-              each gr, index in grade
-                a(href="/grade/#{gr.toLowerCase().split(' ').join('-')}").Article--property-value #{gr}
-
-  if gpx
-    section
-      .Grid
-        .row
-          .gr-12
-            #map
+                a(href="/region/#{tag.toLowerCase().split(' ').join('-')}") #{tag}
+            span /
+            span
+              !=title
 
   section
     .Grid
       .row
-        .gr-12!= contents
+        .gr-8
+          p.Article--lead
+            =lead
+          .row
+            .gr-12!= contents
+
+
+          .row
+            - related = 0;
+            - for (var i=0; i < regions[region].length; i++ ) {
+               - walk = regions[region][i];
+               - if( (walk.title != title) && related < 2) {
+                - related++;
+                .gr-6
+                  include partials/article_card
+              - }
+            - }
+
+        .gr-4
+          .Article--properties
+            p
+              strong
+                | Grade:&nbsp;
+            if grade && grade.length > 0
+              each gr, index in grade
+                a(href="/grade/#{gr.toLowerCase().split(' ').join('-')}/") #{gr}
+            p
+              strong
+                | Start:&nbsp;
+              if start
+                =start
+            p
+              strong
+                | End:&nbsp;
+              if end
+                =end
+            p
+              strong
+                | Distance:&nbsp;
+              if distance
+                =distance
+
+          #sticky-anchor
+          .Grid.map-container
+            .row
+              .map-wrapper
+                #map
 
 
     script.

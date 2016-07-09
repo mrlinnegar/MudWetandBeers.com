@@ -40,7 +40,7 @@ linesLayer = osMap.getVectorLayer();
 routeMarkersLayer = new OpenLayers.Layer.Markers("Route Markers");
 points = new Array();
 //make a route
-osMap.setCenter(new OpenSpace.MapPoint(data.center.easting,data.center.northing), 6);
+osMap.setCenter(new OpenSpace.MapPoint(pointData[0].easting,pointData[0].northing), 6);
 
 for(var i = 0, len = pointData.length; i < len; i++){
   var point = pointData[i];
@@ -71,6 +71,26 @@ mwab.loadMap = function(){
     this.renderMap();
   }
 };
+
+
+function sticky_relocate() {
+    var window_top = $(window).scrollTop();
+    var div_top = $('#sticky-anchor').offset().top;
+    if (window_top > div_top) {
+        $('.map-container').addClass('fixed');
+        $('#sticky-anchor').height($('.map-container').outerHeight());
+    } else {
+        $('.map-container').removeClass('fixed');
+        $('#sticky-anchor').height(0);
+    }
+}
+
+$(function() {
+    $(window).scroll(sticky_relocate);
+    sticky_relocate();
+});
+
+
 
 $(document).ready(function () {
   'use strict';

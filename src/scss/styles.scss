@@ -1,5 +1,7 @@
 @import "lib/normalize";
 @import "lib/gridle/gridle";
+@import "lib/grid";
+
 @import "base/colours";
 @import "base/typography";
 @import "base/imagery";
@@ -9,16 +11,15 @@
 @import "components/footer";
 @import "components/map";
 @import "components/article-card";
+@import "components/article-lead";
 
-@import "lib/grid";
+@import "components/article-breadcrumb";
+
+
 
 
 body {
 
-}
-
-section {
-  padding: 24px 0;
 }
 
 // manage container width :
@@ -27,16 +28,8 @@ section {
     margin : 0 auto;
 }
 
-.row {
-   @media screen and (max-width: 1200px) {
-    margin-left: 0px;
-    margin-right: 0px;
-  }
-}
-
-
 .Site--top-bar {
-  background-color: $dark;
+  background-color: $panel;
   padding: 0;
 }
 
@@ -75,14 +68,10 @@ section {
   background-color: $panel;
   padding: 0.8em;
   color: white;
-  margin-top: -40px;
+
+  p {
+    @include rem-font-size(1.5);
+  }
+
 }
 
-.Article--property {
-  color: $dark;
-  padding: 0 0.2em;
-}
-
-.Article--property-value {
-  color: white;
-}
