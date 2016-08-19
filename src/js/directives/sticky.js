@@ -25,10 +25,10 @@ app.directive('sticky', function($window, MapProvider){
 
   angular.element($window).bind("scroll", function(e) {
     for(var i = 0; i < elements.length; i++){
-      if($window.pageYOffset > offset(sticky_element).top) {
-        elements[i].addClass("fixed");
+      if($window.pageYOffset > offset(elements[i].anchor).top) {
+        elements[i].element.addClass("fixed");
       } else {
-        elements[i].removeClass("fixed");
+        elements[i].element.removeClass("fixed");
       }
     }
 
@@ -37,9 +37,12 @@ app.directive('sticky', function($window, MapProvider){
   return {
     scope: false,
     link: function ($scope, $element, $attr) {
-      $scope.jimbo = [];
-      $scope.jimbo.push("Point");
-      elements.push($element);
+
+      var d = {
+        element: $element,
+        anchor: angular.element(document.querySelector($attr.anchor))
+      };
+      elements.push(d);
     }
   };
-})
+});

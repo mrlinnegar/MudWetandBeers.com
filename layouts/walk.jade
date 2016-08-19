@@ -12,14 +12,14 @@ block content
 
 
 
-    section.sticky--bar(sticky)
+    section.sticky--bar(sticky anchor="#sticky-bar-anchor")
       .container
         .row
           h3.sticky--title
             = title
           span.sticky--grid-ref
             | NY325066
-    #sticky-anchor
+    #sticky-bar-anchor
     section
       .container
         .row
@@ -39,8 +39,6 @@ block content
                 != contents
           div(class="gr-4 gr-12@mobile")
             .article--properties
-              h4
-                | Information
               p
                 strong
                   | Grade:&nbsp;
@@ -62,8 +60,8 @@ block content
                   | Distance:&nbsp;
                 if distance
                   =distance
-
-            .container.map-container(sticky)
+            #sticky-map-anchor
+            .container.map-container(sticky anchor="#sticky-map-anchor")
               .row
                 .map-wrapper
                   #map

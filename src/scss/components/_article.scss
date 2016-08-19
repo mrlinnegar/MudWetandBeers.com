@@ -22,6 +22,9 @@
 
 .article--properties {
   @include rem-font-size(1.5);
+  padding: 10px;
+  background-color: #cecece;
+  margin: 20px 0;
 }
 
 
@@ -37,7 +40,9 @@
   &.fixed {
     display: block;
     transform: translateY(0px);
+    z-index: 1000;
   }
+  
   .sticky--title {
     font-size: 1em;
     margin:0;
