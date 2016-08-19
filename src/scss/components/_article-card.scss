@@ -1,7 +1,6 @@
 
 .article-card {
 
-  color: #44422D;
   text-decoration: none;
 
   &:hover{
@@ -18,14 +17,14 @@
   }
 
   .article-card--date {
-    color: #cecece;
+
     padding: 5px;
     padding-left: 0;
     @include rem-font-size(1.5);
   }
 
   .article-card--tag {
-    color: #4D4D4D;
+
     padding: 5px;
     padding-left: 0;
     @include rem-font-size(1.5);
@@ -34,8 +33,11 @@
   .article-card--image {
     overflow: hidden;
     height: 250px;
+    position: relative;
     img {
       width: 100%;
+      position: absolute;
+      top: -25%;
     }
   }
 

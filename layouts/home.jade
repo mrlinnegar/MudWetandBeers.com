@@ -3,50 +3,24 @@ extends layout
 
 block head
 
-  section.Site--header(style="background-image:url(#{backgroundImage})")
-    h1.Site--title
-      span Mud
-      span Wet
-      span.and and
-      span Beers.com
-    p.Site--lead=site.lead
+  section.site--header
+    .container
+      .row
+        h1.site--title
+          span Mud
+          span Wet
+          span.and and
+          span Beers.com
+        p.Site--lead=site.lead
 
 block content
 
   section
-    .Grid
-      .row
-        div(class="gr-8 gr-12@tablet")
+    .container
+      div(class="row row@mobile")
+        div(class="gr-12 gr-12@mobile")
           .row
             div(class="gr-12")
               - walk = collections.featured[0]
               include partials/article_card
-
-          - for (var i = 1; i < collections.featured.length; i=i+2) {
-            .row
-              div(class="gr-6")
-                - walk = collections.featured[i]
-                include partials/article_card
-              div(class="gr-6")
-                - walk = collections.featured[i+1]
-                include partials/article_card
-
-          - }
-
-        div(class="gr-4 gr-12@tablet")
-          h4 Regions
-          ul
-            - for (var r in regions ) {
-              li
-                a(href="/region/#{regions[r].urlSafe}/")
-                  =r
-                span (#{regions[r].length})
-            - }
-          h4 Wainwright
-          ul
-            - for (var r in wainwright ) {
-              li
-                a(href="/wainwright/#{wainwright[r].urlSafe}/")
-                  =r
-            - }
 

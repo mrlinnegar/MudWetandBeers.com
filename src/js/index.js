@@ -1,1 +1,1 @@
-index.js
+var app = angular.module('whereAmI',[])

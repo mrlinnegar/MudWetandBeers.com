@@ -6,7 +6,7 @@
 
   &.fixed {
     position: fixed;
-    top: 0;
+    top: 40px;
 
     .map-wrapper {
       @include gridle_grid ( 4 );
@@ -22,4 +22,5 @@
 #map {
   height: 600px;
   width: 100%;
+  background-color: #cecece;
 }

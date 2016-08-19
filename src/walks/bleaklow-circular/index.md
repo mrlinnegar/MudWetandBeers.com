@@ -8,7 +8,7 @@ layout: walk.jade
 region: The Peak District
 image: images/IMG_4678.jpg
 lead: Taking in the views over Glossop from Bleaklow
-
+draft: true
 ---
 
 

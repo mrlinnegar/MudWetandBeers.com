@@ -1,0 +1,25 @@
+//- post.jade
+extends page
+
+block content
+  section.Article--header-background
+    .Grid
+      .row
+        .gr-12.Article--header
+          h1.Article--title!= title
+
+  section
+    .Grid
+      .row
+        .gr-12
+          .Article--breadcrumb
+            a(href="/") Home
+            span /
+            span
+              !=title
+
+  section
+    .Grid
+      .row
+        div(class="gr-12 ")
+          .gr-12!= contents

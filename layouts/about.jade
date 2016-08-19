@@ -2,21 +2,20 @@
 extends page
 
 block head
-  section.Site--top-bar
-    .Grid
+  section.site--top-bar
+    .container
       .row
         .gr-12
           a.Site--home-link(href='/') MudWetandBeers.com
 
 block content
-
-  section
-    .Grid
+  section.Article--header-background(style="background-image:url(#{image});")
+    .container
       .row
-        .gr-12
+        .gr-12.Article--header
           h1.Article--title!= title
 
-    .Grid
+    .container
       .row
         .gr-12
           div!= contents

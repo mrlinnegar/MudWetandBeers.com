@@ -1,5 +1,5 @@
 @import "lib/normalize";
-@import "lib/gridle/gridle";
+@import "lib/gridle/gridle-flex";
 @import "lib/grid";
 
 @import "base/colours";
@@ -13,6 +13,8 @@
 @import "components/article-card";
 @import "components/article-lead";
 
+@import "components/article";
+
 @import "components/article-breadcrumb";
 
 
@@ -23,55 +25,19 @@ body {
 }
 
 // manage container width :
-.Grid {
-    max-width : 1280px;
-    margin : 0 auto;
-}
 
-.Site--top-bar {
+
+.site--top-bar {
   background-color: $panel;
-  padding: 0;
+  color: white;
 }
 
-.Site--home-link {
+.site--home-link {
   font-family: 'UmbrageRegular';
   font-variant: small-caps;
   text-decoration: none;
-  color: #ECE9E0;
   display: inline-block;
-  padding: 10px 0;
-}
-
-.Article--header-background {
-  background-position: center;
-  background-size: cover;
-  background-repeat:no-repeat;
-  background-color: darken( #F4F4F4 ,20%);
-  min-height: 500px;
-}
-.Article--header {
-  display: flex;
-  align-items: flex-end;
-  min-height: 600px;
-}
-
-.Article--title {
-  font-size: 5em;
-  margin: 0;
-  padding: 0.8em 0;
-  font-variant: small-caps;
-  text-shadow: 0 0 15px black;
+  padding: 0;
   color: white;
-}
-
-.Article--properties {
-  background-color: $panel;
-  padding: 0.8em;
-  color: white;
-
-  p {
-    @include rem-font-size(1.5);
-  }
-
 }
 

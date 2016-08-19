@@ -8,6 +8,7 @@ gpx: scafell-pike.gpx
 image: images/IMG_4779.jpg
 maps: OL7
 grade: Medium
+draft: true
 
 ---
 

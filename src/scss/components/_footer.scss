@@ -1,7 +1,6 @@
 .footer {
   color: white;
   background-color: $panel;
-  padding: 24px 0;
 }
 
 .footer--list {
@@ -12,15 +11,20 @@
 
   li {
     display: block;
-    padding: 10px 0;
+    padding: 5px 0;
   }
 
   a {
-    color: rgba(255,255,255,0.7);
+
   }
 }
 
 .footer--copy {
   text-align: center;
-  padding: 15px;
+  @include rem-font-size(1.5);
+}
+
+.footer--quote {
+  @include rem-font-size(1.5);
+  font-style: italic;
 }

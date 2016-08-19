@@ -6,6 +6,7 @@ layout: walk.jade
 region: The Lake District
 gpx: castle-cragg.gpx
 image: images/IMG_4911.jpg
+draft: true
 ---
 
 

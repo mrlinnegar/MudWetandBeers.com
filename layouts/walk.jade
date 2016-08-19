@@ -1,86 +1,70 @@
 //- post.jade
 extends page
-block head
-  section.Site--top-bar
-    .Grid
-      .row
-        .gr-12
-          a.Site--home-link(href='/') MudWetandBeers.com
 
 block content
-  section.Article--header-background(style="background-image:url(#{image});")
-    .Grid
-      .row
-        .gr-12.Article--header
-          h1.Article--title!= title
+  div(ng-controller="Walk")
 
-  section
-    .Grid
-      .row
-        .gr-12
-          .Article--breadcrumb
-            a(href="/") Home
-            span /
-            if region && region.length > 0
-              each tag, index in region
-                a(href="/region/#{tag.toLowerCase().split(' ').join('-')}") #{tag}
-            span /
-            span
-              !=title
-
-  section
-    .Grid
-      .row
-        .gr-8
-          p.Article--lead
-            =lead
-          .row
-            .gr-12!= contents
+    section.article--header-background(style="background-image:url(#{image});")
+      .container
+        .row
+          .gr-12.article--header
+            h1.article--title!= title
 
 
-          .row
-            - related = 0;
-            - for (var i=0; i < regions[region].length; i++ ) {
-               - walk = regions[region][i];
-               - if( (walk.title != title) && related < 2) {
-                - related++;
-                .gr-6
-                  include partials/article_card
-              - }
-            - }
 
-        .gr-4
-          .Article--properties
-            p
-              strong
-                | Grade:&nbsp;
-            if grade && grade.length > 0
-              each gr, index in grade
-                a(href="/grade/#{gr.toLowerCase().split(' ').join('-')}/") #{gr}
-            p
-              strong
-                | Start:&nbsp;
-              if start
-                =start
-            p
-              strong
-                | End:&nbsp;
-              if end
-                =end
-            p
-              strong
-                | Distance:&nbsp;
-              if distance
-                =distance
+    section.sticky--bar(sticky)
+      .container
+        .row
+          h3.sticky--title
+            = title
+          span.sticky--grid-ref
+            | NY325066
+    #sticky-anchor
+    section
+      .container
+        .row
+          div(class="gr-8 gr-12@mobile")
+            div(class="row row@mobile")
+              .gr-12
+                .article--breadcrumb
+                  a(href="/") Home
+                  span /
+                  if region && region.length > 0
+                    each tag, index in region
+                      a(href="/region/#{tag.toLowerCase().split(' ').join('-')}") #{tag}
+                  span /
+                  span
+                    !=title
 
-          #sticky-anchor
-          .Grid.map-container
-            .row
-              .map-wrapper
-                #map
+                != contents
+          div(class="gr-4 gr-12@mobile")
+            .article--properties
+              h4
+                | Information
+              p
+                strong
+                  | Grade:&nbsp;
+              if grade && grade.length > 0
+                each gr, index in grade
+                  a(href="/grade/#{gr.toLowerCase().split(' ').join('-')}/") #{gr}
+              p
+                strong
+                  | Start:&nbsp;
+                if start
+                  =start
+              p
+                strong
+                  | End:&nbsp;
+                if end
+                  =end
+              p
+                strong
+                  | Distance:&nbsp;
+                if distance
+                  =distance
 
+            .container.map-container(sticky)
+              .row
+                .map-wrapper
+                  #map
 
-    script.
-      var pageMeta = {
-        gpx : '#{gpx}'
-      };

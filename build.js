@@ -103,6 +103,10 @@ module.exports = Metalsmith(__dirname)
       pattern: 'walks/*/*.md',
       sortBy: 'date',
       reverse: true
+    },
+    blog: {
+      pattern: 'blog/*.md',
+      sortBy: 'date'
     }
   }))
   .use(markdown())
@@ -110,6 +114,11 @@ module.exports = Metalsmith(__dirname)
   .use(branch('walks/*/*.html')
     .use(permalinks({
       pattern:'walks/:title/'
+    }))
+  )
+  .use(branch('blog/*.html')
+    .use(permalinks({
+      pattern:'blog/:title/'
     }))
   )
   .use(branch('**.html')

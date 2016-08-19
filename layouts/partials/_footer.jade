@@ -1,7 +1,7 @@
 //- partials/_footer.jade
 
-footer.footer
-  .Grid
+section.footer
+  .container
     .row
       .gr-4
         h4.footer--title Regions
@@ -12,11 +12,27 @@ footer.footer
                 =r
               span &nbsp;(#{regions[r].length})
           - }
+      .gr-2
+      .gr-6
+        p.footer--quote
+          | “The fleeting hour of life of those who love the hills is quickly spent, but the hills are eternal. Always there will be the lonely ridge, the dancing beck,
+          the silent forest; always there will be the exhilaration of the summits. These are for the seeking, and those who seek and find while there is still time will
+          be blessed both in mind and body.”
     .row
       .gr-12.footer--copy
-      | &copy; MudWetandBeers.com 2016
+        | &copy; MudWetandBeers.com 2016
 
-script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js")
 script(type="text/javascript" src="https://openspace.ordnancesurvey.co.uk/osmapapi/openspace.js?key=02020AC47FF123EBE0530B6CA40A2D86")
-script(type="text/javascript" src="/js/mwab.js")
+script(type="text/javascript" src="/js/lib/angular.min.js")
 
+script(type="text/javascript" src="/js/index.js")
+script(type="text/javascript" src="/js/controllers/Walk.js")
+script(type="text/javascript" src="/js/controllers/Map.js")
+script(type="text/javascript" src="/js/services/routeService.js")
+script(type="text/javascript" src="/js/services/MapService.js")
+
+script(type="text/javascript" src="/js/directives/sticky.js")
+script(type="text/javascript" src="/js/directives/MapPoint.js")
+
+
+script(type="text/javascript" src="/js/whereami.js")

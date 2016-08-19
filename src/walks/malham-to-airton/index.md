@@ -6,6 +6,7 @@ layout: walk.jade
 region: The Yorkshire Dales
 gpx: malham-airton.gpx
 image: images/IMG_5332.jpg
+draft: true
 ---
 
 

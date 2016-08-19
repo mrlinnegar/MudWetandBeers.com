@@ -1,0 +1,20 @@
+ - for (var i = 1; i < collections.featured.length; i=i+2) {
+   .row
+     div(class="gr-6 gr-12@mobile")
+       - walk = collections.featured[i]
+       include partials/article_card
+     div(class="gr-6 gr-12@mobile")
+       - walk = collections.featured[i+1]
+       include partials/article_card
+
+ -
+ div(class="gr-4 gr-12@mobile")
+   h4 Blog
+   ul
+   - for (var i = 0; i < collections.blog.length; i++) {
+   li
+     - item = collections.blog[i]
+     a(href="#{item.path}")
+       = item.title
+   - }
+

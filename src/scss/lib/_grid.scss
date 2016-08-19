@@ -20,7 +20,8 @@ $settings : (
 // make the use of media queries really easy
 @include gridle_register_state ( mobile , (
     max-width : 480px,
-    gutter-left: 10px
+    gutter-left: 0px,
+    gutter-right: 0px
 ) );
 
 
@@ -35,3 +36,13 @@ $settings : (
 
 // generate classes :
 @include gridle_generate_classes ( );
+
+
+section {
+  padding: 0 10px;
+}
+
+.container {
+    max-width : 1280px;
+    margin : 0 auto;
+}
