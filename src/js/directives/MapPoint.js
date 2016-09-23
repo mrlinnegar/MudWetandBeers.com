@@ -1,4 +1,4 @@
-app.directive('mapPoint', function($window, MapProvider){
+app.directive('mapPoint', function($window, MapProvider, $timeout){
   var elements = [];
 
   function offset(elm) {
@@ -22,21 +22,36 @@ app.directive('mapPoint', function($window, MapProvider){
   }
 
 
-  angular.element($window).bind("scroll", function(e) {
-    for(var i = 0; i < elements.length; i++){
-      if(inView(offset(elements[i]))){
-        MapProvider.setGridRef(angular.element(elements[i]).attr("ngr"));
-        break;
-      }
-    }
-
-  });
 
   return {
+    scope: false,
     link: function ($scope, $element, $attr) {
+
+      var scrollDelay = 250,
+        scrollThrottleTimeout,
+        throttled = false,
+        scrollListener = function (e) {
+          if(!throttled) {
+            throttled = true;
+
+            scrollThrottleTimeout = $timeout(function(){
+              for (var i = 0; i < elements.length; i++) {
+                if (inView(offset(elements[i]))) {
+                  var ngr = angular.element(elements[i]).attr("ngr")
+                  MapProvider.setGridRef(ngr);
+                  $scope.gridRef = ngr;
+                  break;
+                }
+              }
+              throttled = false;
+            }, scrollDelay);
+          }
+        };
+
       if(typeof $scope.mapPoints == "undefined") $scope.mapPoints = [];
       $scope.mapPoints.push($attr.ngr);
       elements.push($element);
+      angular.element($window).bind("scroll", scrollListener);
     }
   };
 })

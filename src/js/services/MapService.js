@@ -10,17 +10,39 @@ app.service('MapProvider', function(NGRTOEN){
   var routeMarkersLayer = new OpenLayers.Layer.Markers("Route Markers");
   var currentRef = "";
   var points = [];
+  var markers = [];
+  var selected_marker = [];
 
 
   function addPoint(ref){
-    console.log(ref);
     var data = NGRTOEN(ref);
     console.log(data);
     routepos = new OpenSpace.MapPoint(data.e,data.n);
-    routesize = new OpenLayers.Size(25,25);
-    routeoffset = new OpenLayers.Pixel(-5,-37);
+    routesize = new OpenLayers.Size(50,50);
+    routeoffset = new OpenLayers.Pixel(0, 0);
     routeicon = new OpenSpace.Icon('/images/icons/point.png', routesize, routeoffset, null, null);
-    routeMarkersLayer.addMarker(new OpenLayers.Marker(routepos, routeicon));
+    var marker = new OpenLayers.Marker(routepos, routeicon)
+    markers.push(marker);
+    routeMarkersLayer.addMarker(marker);
+  }
+
+
+  function addSelectedPoint(ref){
+    console.log(ref);
+    var data = NGRTOEN(ref);
+
+    console.log(data);
+    routepos = new OpenSpace.MapPoint(data.e,data.n);
+    routesize = new OpenLayers.Size(50,50);
+    routeoffset = new OpenLayers.Pixel(0, 0);
+    routeicon = new OpenSpace.Icon('/images/icons/point-selected.png', routesize, routeoffset, null, null);
+    if(selected_marker) {
+     // routeMarkersLayer.removeMarker(selected_marker);
+    }
+    console.log(routeMarkersLayer);
+    console.log(selected_marker);
+    selected_marker = new OpenLayers.Marker(routepos, routeicon);
+    routeMarkersLayer.addMarker(selected_marker);
   }
 
   function setCenter(e,n){
@@ -34,6 +56,7 @@ app.service('MapProvider', function(NGRTOEN){
         var data = NGRTOEN(ref);
         osMap.setCenter(new OpenSpace.MapPoint(data.e, data.n), 7);
         currentRef = ref;
+        addSelectedPoint(ref);
       }
     },
     setPoints: function(points){
