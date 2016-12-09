@@ -2,7 +2,7 @@
 
 var Metalsmith = require('metalsmith'),
  branch = require('metalsmith-branch'),
-  sass = require('metalsmith-sass'),
+  //sass = require('metalsmith-sass'),
   dateFormatter = require('metalsmith-date-formatter'),
   layouts = require('metalsmith-layouts'),
   markdown   = require('metalsmith-markdown'),
@@ -10,15 +10,15 @@ var Metalsmith = require('metalsmith'),
   collections = require('metalsmith-collections'),
   excerpts = require('metalsmith-excerpts'),
   tags = require('./lib/metalsmith-tag-edit.js'),
-  imagemin = require('metalsmith-imagemin'),
+  //imagemin = require('metalsmith-imagemin'),
   sitemap = require('metalsmith-sitemap'),
   drafts = require('metalsmith-drafts'),
-  moment = require('moment')
-  LatLon = require('./node_modules/geodesy/npm.js').LatLonEllipsoidal,
-  OsGridRef = require('./node_modules/geodesy/npm.js').OsGridRef;
+  moment = require('moment');
+//  LatLon = require('./node_modules/geodesy/npm.js').LatLonEllipsoidal,
+ // OsGridRef = require('./node_modules/geodesy/npm.js').OsGridRef;
 
 
-
+/*
 var my_plugin = function (options) {
 
     var parser = require("xml2json");
@@ -76,7 +76,7 @@ var my_plugin = function (options) {
         done();
     };
 };
-
+*/
 
 module.exports = Metalsmith(__dirname)
   .metadata({
@@ -167,11 +167,16 @@ module.exports = Metalsmith(__dirname)
     layout: 'tag.jade',
     slug: function(tag) { return tag.toLowerCase().split(' ').join('-'); }
   }))
-  .use(my_plugin())
   .use(layouts({
     engine: 'jade',
     moment: moment
   }))
+  .use(sitemap({hostname: 'http://mudwetandbeers.com'}))
+  .destination('./build');
+
+
+/*
+
   .use(sass({
     outputDir: function(originalPath) {
         // this will change scss/some/path to css/some/path
@@ -179,8 +184,8 @@ module.exports = Metalsmith(__dirname)
     },
     outputStyle: "compressed"
   }))
-  .use(imagemin({
+ /* .use(imagemin({
     optimizationLevel: 3
   }))
-  .use(sitemap({hostname: 'http://mudwetandbeers.com'}))
-  .destination('./build');
+  */
+

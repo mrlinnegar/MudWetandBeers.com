@@ -1,5 +1,5 @@
 build: clean
-	node --harmony index.js
+	node index.js
 
 clean:
 	rm -rf build
