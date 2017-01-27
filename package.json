@@ -30,6 +30,7 @@
     "metalsmith-sass": "^1.4.0",
     "metalsmith-sitemap": "^1.2.0",
     "metalsmith-watch": "^1.0.3",
+    "s3": "^4.4.0",
     "slug": "^0.9.1"
   }
 }
