@@ -2,7 +2,7 @@
 
 var Metalsmith = require('metalsmith'),
  branch = require('metalsmith-branch'),
-  //sass = require('metalsmith-sass'),
+  sass = require('metalsmith-sass'),
   dateFormatter = require('metalsmith-date-formatter'),
   layouts = require('metalsmith-layouts'),
   markdown   = require('metalsmith-markdown'),
@@ -172,18 +172,14 @@ module.exports = Metalsmith(__dirname)
     moment: moment
   }))
   .use(sitemap({hostname: 'http://mudwetandbeers.com'}))
-  .destination('./build');
-
-
-/*
-
+  .destination('./build')
   .use(sass({
     outputDir: function(originalPath) {
         // this will change scss/some/path to css/some/path
         return originalPath.replace("scss", "css");
     },
     outputStyle: "compressed"
-  }))
+  }));
  /* .use(imagemin({
     optimizationLevel: 3
   }))
