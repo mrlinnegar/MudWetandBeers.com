@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/mrlinnegar/MudWetandBeers.com#readme",
   "devDependencies": {
+    "geodesy": "^1.1.1",
     "jade": "^1.11.0",
     "metalsmith": "^2.3.0",
     "metalsmith-branch": "0.0.4",
@@ -31,6 +32,7 @@
     "metalsmith-sitemap": "^1.2.0",
     "metalsmith-watch": "^1.0.3",
     "s3": "^4.4.0",
-    "slug": "^0.9.1"
+    "slug": "^0.9.1",
+    "xml2json": "^0.11.0"
   }
 }
