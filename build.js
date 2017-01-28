@@ -14,10 +14,10 @@ var Metalsmith = require('metalsmith'),
   sitemap = require('metalsmith-sitemap'),
   drafts = require('metalsmith-drafts'),
   moment = require('moment');
-  LatLon = require('./node_modules/geodesy/npm.js').LatLonEllipsoidal,
-  OsGridRef = require('./node_modules/geodesy/npm.js').OsGridRef;
+//  LatLon = require('./node_modules/geodesy/npm.js').LatLonEllipsoidal,
+ // OsGridRef = require('./node_modules/geodesy/npm.js').OsGridRef;
 
-
+/*
 
 var my_plugin = function (options) {
 
@@ -76,7 +76,7 @@ var my_plugin = function (options) {
         done();
     };
 };
-
+*/
 
 module.exports = Metalsmith(__dirname)
   .metadata({
@@ -89,7 +89,6 @@ module.exports = Metalsmith(__dirname)
     }
   })
   .source('./src')
-  .use(my_plugin())
   .use(drafts())
   .use(dateFormatter({
     dates: [ { key: 'publishDate', format: 'MMM YYYY'}]
