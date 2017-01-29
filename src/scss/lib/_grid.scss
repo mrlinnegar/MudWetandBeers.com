@@ -39,10 +39,14 @@ $settings : (
 
 
 section {
-  padding: 0 10px;
+  padding: 0;
 }
 
 .container {
     max-width : 1280px;
     margin : 0 auto;
+
+    @media screen and (min-width: 481px) {
+      padding: 0 10px;
+    }
 }

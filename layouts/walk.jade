@@ -6,7 +6,7 @@ block content
 
     section.article--header-background(style="background-image:url(#{image});")
       .container
-        .row
+        .row(class="row row@mobile")
           .gr-12.article--header
             h1.article--title!= title
 
@@ -14,7 +14,7 @@ block content
 
     section.sticky--bar(sticky anchor="#sticky-bar-anchor")
       .container
-        .row
+        .row(class="row row@mobile")
           .gr-12
             h3.sticky--title
               = title
@@ -25,37 +25,17 @@ block content
     section
       .container
         .row
-          div(class="gr-8 gr-12@mobile")
-            div(class="row row@mobile")
-              .gr-12
-                .article--breadcrumb
-                  a(href="/") Home
-                  span /
-                  if region && region.length > 0
-                    each tag, index in region
-                      a(href="/region/#{tag.toLowerCase().split(' ').join('-')}") #{tag}
-                  span /
-                  span
-                    !=title
-
-                p.lead
-                  != lead
-                != contents
-
-              .gr-12
-                 #disqus_thread
-                  script.
-                    var disqus_config = function () {
-                    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-                    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-                    };
-
-                    (function() { // DON'T EDIT BELOW THIS LINE
-                    var d = document, s = d.createElement('script');
-                    s.src = '//mudwetandbeers.disqus.com/embed.js';
-                    s.setAttribute('data-timestamp', +new Date());
-                    (d.head || d.body).appendChild(s);
-                    })();
+          .gr-12
+            .article--breadcrumb
+              a(href="/") Home
+              span /
+              if region && region.length > 0
+                each tag, index in region
+                  a(href="/region/#{tag.toLowerCase().split(' ').join('-')}") #{tag}
+              span /
+              span
+                !=title
+        .row(class="row-reverse row-reverse@mobile")
 
           div(class="gr-4 gr-12@mobile")
             .article--properties
@@ -85,4 +65,28 @@ block content
               .row
                 .map-wrapper
                   #map
+
+          div(class="gr-8 gr-12@mobile")
+
+
+            p.article--lead
+              != lead
+
+            != contents
+
+             #disqus_thread
+              script.
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = '//mudwetandbeers.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+
+
 

@@ -2,7 +2,7 @@
 .map-container {
   width: 100%;
   max-width: 1280px;
-
+  padding: 0;
 
   &.fixed {
     position: fixed;
@@ -17,10 +17,16 @@
 
 .map-wrapper {
   @include gridle_grid ( 12 );
+  padding: 0;
+  box-sizing: border-box;
 }
 
 #map {
   height: 600px;
   width: 100%;
   background-color: #cecece;
+
+  @media screen and (max-width: 480px) {
+    display: none;
+  }
 }

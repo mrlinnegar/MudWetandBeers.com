@@ -2,22 +2,52 @@
   background-position: center;
   background-size: cover;
   background-repeat:no-repeat;
-  min-height: 500px;
 }
+
+
 .article--header {
   display: flex;
   align-items: flex-end;
   flex-direction: row;
   min-height: 600px;
+
+    @media screen and (max-width: 600px) {
+      min-height: 250px;
+    }
+
 }
 
+
 .article--title {
-  font-size: 5em;
-  margin: 0;
-  padding: 0.8em 0;
-  font-variant: small-caps;
   color: white;
   text-shadow: #000123 0 0 10px;
+  font-variant: small-caps;
+  margin: 0;
+  text-align: left;
+  font-size: 5em;
+  padding: 0.8em 0;
+  @include rem-font-size(4);
+
+  @media screen and (min-width: 600px) {
+    @include rem-font-size(5);
+    text-align: center;
+    span {
+      display: inline;
+    }
+  }
+
+  @media screen and (min-width: 800px) {
+    @include rem-font-size(7);
+  }
+
+  @media screen and (min-width: 1200px) {
+    @include rem-font-size(10);
+  }
+
+}
+
+.article--lead {
+  @include rem-font-size(2.5);
 }
 
 .article--properties {
@@ -35,7 +65,7 @@
   transform: translateY(-100px);
   transition: all 0.2s ease;
   background-color: $panel;
-
+  box-sizing: border-box;
 
   &.fixed {
     display: block;
