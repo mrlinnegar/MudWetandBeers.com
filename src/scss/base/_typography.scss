@@ -54,5 +54,9 @@ h4 {
    font-variant: small-caps;
 }
 p {
+
     @include rem-font-size(2);
+    @media screen and (max-width: 600px) {
+      @include rem-font-size(1.8);
+    }
 }

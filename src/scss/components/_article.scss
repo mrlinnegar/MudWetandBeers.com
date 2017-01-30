@@ -90,3 +90,21 @@
   }
 
 }
+
+.article--image {
+  @media screen and (max-width: 600px) {
+    margin-left:-10px;
+    margin-right: -10px;
+  }
+}
+
+.image--description {
+  @include rem-font-size(1.5);
+
+  @media screen and (max-width: 600px) {
+    @include rem-font-size(1);
+  }
+
+  font-style: italic;
+  text-align: center;
+}

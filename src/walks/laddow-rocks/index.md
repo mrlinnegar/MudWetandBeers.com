@@ -19,32 +19,48 @@ lead: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod t
 ## Start
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-<div class="image--wrapper">
+<div class="article--image">
   <img src="images/IMG_1224.JPG" map-point ngr="SK067994" />
+  <div class="image--description">
+    <span> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor.</span>
+  </div>
 </div>
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-<img src="images/IMG_1227.JPG"  map-point ngr="SE059008" />
+<div class="article--image">
+  <img src="images/IMG_1227.JPG"  map-point ngr="SE059008" />
+</div>
 
 ## The Climb
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-<img src="images/IMG_1229.JPG"  map-point ngr="SE057011"/>
+<div class="article--image">
+  <img src="images/IMG_1229.JPG"  map-point ngr="SE057011"/>
+</div>
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-<img src="images/IMG_1231.JPG"  map-point ngr="SE056012"/>
+<div class="article--image">
+  <img src="images/IMG_1231.JPG"  map-point ngr="SE056012"/>
+</div>
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-<img src="images/IMG_1233.JPG"  map-point ngr="SE057015"/>
+<div class="article--image">
+  <img src="images/IMG_1233.JPG"  map-point ngr="SE057015"/>
+</div>
 
 ## Another title
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-<img src="images/IMG_1234.JPG"  map-point ngr="SE060021"/>
+<div class="article--image">
+  <img src="images/IMG_1234.JPG"  map-point ngr="SE060021"/>
+</div>
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-<img src="images/IMG_1238.JPG"  map-point ngr="SK069997"/>
+<div class="article--image">
+  <img src="images/IMG_1238.JPG"  map-point ngr="SK069997"/>
+</div>

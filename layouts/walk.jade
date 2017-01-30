@@ -24,7 +24,7 @@ block content
     #sticky-bar-anchor
     section
       .container
-        .row
+        div(class="row row@mobile")
           .gr-12
             .article--breadcrumb
               a(href="/") Home
@@ -35,7 +35,9 @@ block content
               span /
               span
                 !=title
-        .row(class="row-reverse row-reverse@mobile")
+    section
+      .container
+        div(class="row-reverse row-reverse@mobile")
 
           div(class="gr-4 gr-12@mobile")
             .article--properties
@@ -62,7 +64,7 @@ block content
                   =distance
             #sticky-map-anchor
             .container.map-container(sticky anchor="#sticky-map-anchor")
-              .row
+              div(class="row row@mobile")
                 .map-wrapper
                   #map
 
