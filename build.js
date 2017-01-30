@@ -13,11 +13,11 @@ var Metalsmith = require('metalsmith'),
   //imagemin = require('metalsmith-imagemin'),
   sitemap = require('metalsmith-sitemap'),
   drafts = require('metalsmith-drafts'),
-  moment = require('moment');
-//  LatLon = require('./node_modules/geodesy/npm.js').LatLonEllipsoidal,
- // OsGridRef = require('./node_modules/geodesy/npm.js').OsGridRef;
+  moment = require('moment'),
+  LatLon = require('./node_modules/geodesy/npm.js').LatLonEllipsoidal,
+  OsGridRef = require('./node_modules/geodesy/npm.js').OsGridRef;
 
-/*
+
 
 var my_plugin = function (options) {
 
@@ -29,7 +29,9 @@ var my_plugin = function (options) {
     }
 
     function toJSON(xml){
-      return parser.toJson(xml, {"object":true});
+      var p = require("xml-js");
+      var json =  p.xml2json(xml, {compact: true});
+      return JSON.parse(json);
     }
 
     return function (files, metalsmith, done) {
@@ -38,10 +40,11 @@ var my_plugin = function (options) {
         Object.keys(files).forEach(function(file){
             if(!isGPX(file))
               return;
-
+            console.log(file);
             var newFile = {};//files[file];
             var xml = files[file].contents.toString();
             var json = toJSON(xml);
+
             var track = json.gpx.trk.trkseg.trkpt;
             var data = {};
             var grid_refs = [];
@@ -49,9 +52,9 @@ var my_plugin = function (options) {
             var lons = [];
 
             for(var i = 0, l = track.length; i < l; i++){
-              var ll = new LatLon(track[i].lat, track[i].lon);
-              lats.push(track[i].lat);
-              lons.push(track[i].lon);
+              var ll = new LatLon(track[i]._attributes.lat, track[i]._attributes.lon);
+              lats.push(track[i]._attributes.lat);
+              lons.push(track[i]._attributes.lon);
               grid_refs.push(OsGridRef.latLonToOsGrid(ll));
             }
 
@@ -76,7 +79,7 @@ var my_plugin = function (options) {
         done();
     };
 };
-*/
+
 
 module.exports = Metalsmith(__dirname)
   .metadata({
@@ -90,6 +93,7 @@ module.exports = Metalsmith(__dirname)
   })
   .source('./src')
   .use(drafts())
+  .use(my_plugin())
   .use(dateFormatter({
     dates: [ { key: 'publishDate', format: 'MMM YYYY'}]
   }))

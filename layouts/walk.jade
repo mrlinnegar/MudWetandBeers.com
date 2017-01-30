@@ -18,8 +18,6 @@ block content
           .gr-12
             h3.sticky--title
               = title
-            span.sticky--grid-ref
-              | {{gridRef}}
 
     #sticky-bar-anchor
     section
@@ -40,32 +38,52 @@ block content
         div(class="row-reverse row-reverse@mobile")
 
           div(class="gr-4 gr-12@mobile")
+            h3
+              | About
             .article--properties
-              p
-                strong
-                  | Grade:&nbsp;
-                if grade && grade.length > 0
-                  each gr, index in grade
-                    a(href="/grade/#{gr.toLowerCase().split(' ').join('-')}/") #{gr}
-              p
-                strong
-                  | Start:&nbsp;
+              table
                 if start
-                  =start
-              p
-                strong
-                  | End:&nbsp;
+                  tr
+                    th
+                      | Start:&nbsp;
+                    td
+                      =start
                 if end
-                  =end
-              p
-                strong
-                  | Distance:&nbsp;
+                  tr
+                    th
+                      | End:&nbsp;
+                    td
+                      =end
                 if distance
-                  =distance
+                  tr
+                    th
+                      | Distance:&nbsp;
+                    td
+                      =distance
+
+                if terrain
+                  tr
+                    th
+                      | terrain:&nbsp;
+                    td
+                      =terrain
+                if grade && grade.length > 0
+                  tr
+                    th
+                      | Grade:&nbsp;
+                    td
+                      each gr, index in grade
+                        a(href="/grade/#{gr.toLowerCase().split(' ').join('-')}/") #{gr}
+
             #sticky-map-anchor
             .container.map-container(sticky anchor="#sticky-map-anchor")
               div(class="row row@mobile")
+
                 .map-wrapper
+                  h3
+                    | Map
+                    span.map--grid-ref
+                      | {{gridRef}}
                   #map
 
           div(class="gr-8 gr-12@mobile")
