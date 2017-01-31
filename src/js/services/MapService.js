@@ -37,7 +37,7 @@ app.service('MapProvider', function(NGRTOEN){
     routeoffset = new OpenLayers.Pixel(0, 0);
     routeicon = new OpenSpace.Icon('/images/icons/point-selected.png', routesize, routeoffset, null, null);
     if(selected_marker) {
-     // routeMarkersLayer.removeMarker(selected_marker);
+      routeMarkersLayer.removeMarker(selected_marker);
     }
     console.log(routeMarkersLayer);
     console.log(selected_marker);

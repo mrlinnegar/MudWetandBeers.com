@@ -4,25 +4,30 @@ block head
   include partials/_top_bar.jade
 
   section.Site--header
-    h1.Site--title=title
+    .container
+      .row
+        .gr-12
+          h1.Site--title=title
 
 block content
 
   section
-    .Grid
-      - for (var i = 0; i < pagination.files.length; i = i + 2) {
-        .row
+    .container
+      .row
+        .gr-12
+          - for (var i = 0; i < pagination.files.length; i = i + 2) {
+            div
 
-          if pagination.files[i]
-            .gr-6
-              - walk = pagination.files[i]
-              include partials/article_card
+              if pagination.files[i]
+                .gr-6
+                  - walk = pagination.files[i]
+                  include partials/article_card
 
-          if pagination.files[i+1]
-            .gr-6
-              - walk = pagination.files[i+1]
-              include partials/article_card
-      - }
+              if pagination.files[i+1]
+                .gr-6
+                  - walk = pagination.files[i+1]
+                  include partials/article_card
+          - }
 
 
   section

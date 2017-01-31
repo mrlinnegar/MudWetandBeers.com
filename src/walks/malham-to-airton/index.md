@@ -1,12 +1,13 @@
 ---
 title: Malham to Airton
 author: James
-publishDate: 2016-02-6
+publishDate: 2016-02-06
 layout: walk.jade
 region: The Yorkshire Dales
 gpx: malham-airton.gpx
 image: images/IMG_5332.jpg
-draft: true
+draft: false
+lead: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 ---
 
 

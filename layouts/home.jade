@@ -19,8 +19,11 @@ block content
     .container
       div(class="row row@mobile")
         div(class="gr-12 gr-12@mobile")
-          .row
-            div(class="gr-12")
-              - walk = collections.featured[0]
-              include partials/article_card
+          - for (var i = 0; i < collections.featured.length; i++) {
+            div
+              if collections.featured[i]
+                .gr-6
+                  - walk = collections.featured[i]
+                  include partials/article_card
+          - }
 

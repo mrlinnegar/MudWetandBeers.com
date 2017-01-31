@@ -64,9 +64,15 @@ block content
                 if terrain
                   tr
                     th
-                      | terrain:&nbsp;
+                      | Terrain:&nbsp;
                     td
                       =terrain
+                if map
+                  tr
+                    th
+                      | Map:&nbsp;
+                    td
+                      =map
                 if grade && grade.length > 0
                   tr
                     th

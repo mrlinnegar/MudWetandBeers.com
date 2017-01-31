@@ -1,12 +1,18 @@
 .footer {
   color: white;
-  background-color: $panel;
+
+}
+.footer--links {
+    background-color: lighten($panel, 5%);
+}
+
+.footer--copyright {
+    background-color: $panel;
 }
 
 .footer--list {
   list-style-type: none;
   padding:0;
-  margin:0;
   @include rem-font-size(1.5);
 
   li {
