@@ -12,38 +12,40 @@ app.service('MapProvider', function(NGRTOEN){
   var currentRef = "";
   var points = [];
   var markers = [];
+  var routeMarkers = {};
   var selected_marker = null;
 
 
   function addPoint(ref){
     var data = NGRTOEN(ref);
-    console.log(data);
+
     routepos = new OpenSpace.MapPoint(data.e,data.n);
     routesize = new OpenLayers.Size(50,50);
     routeoffset = new OpenLayers.Pixel(0, 0);
     routeicon = new OpenSpace.Icon('/images/icons/point.png', routesize, routeoffset, null, null);
     var marker = new OpenLayers.Marker(routepos, routeicon)
     markers.push(marker);
+    routeMarkers[ref] = marker;
     routeMarkersLayer.addMarker(marker);
   }
 
 
   function addSelectedPoint(ref){
     var data = NGRTOEN(ref);
-    //routeMarkersLayer.clearMarkers();
-    //console.log(routeMarkersLayer);
     routepos = new OpenSpace.MapPoint(data.e,data.n);
     routesize = new OpenLayers.Size(50,50);
     routeoffset = new OpenLayers.Pixel(0, 0);
     routeicon = new OpenSpace.Icon('/images/icons/point-selected.png', routesize, routeoffset, null, null);
 
     if(selected_marker) {
-      console.log(selected_marker);
       routeMarkersLayer.removeMarker(selected_marker);
     }
 
-    console.log(routeMarkersLayer.markers);
-    console.log(selected_marker);
+    for (var mref in routeMarkers) {
+      routeMarkers[mref].setOpacity(1);
+    }
+    routeMarkers[ref].setOpacity(0);
+
     selected_marker = new OpenLayers.Marker(routepos, routeicon);
     routeMarkersLayer.addMarker(selected_marker);
   }
