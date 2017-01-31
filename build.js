@@ -21,8 +21,6 @@ var Metalsmith = require('metalsmith'),
 
 var my_plugin = function (options) {
 
-    var parser = require("xml2json");
-
     function isGPX(filename){
       var pattern = /\.gpx/;
       return pattern.test(filename);
