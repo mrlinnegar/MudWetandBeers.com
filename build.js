@@ -10,12 +10,13 @@ var Metalsmith = require('metalsmith'),
   collections = require('metalsmith-collections'),
   excerpts = require('metalsmith-excerpts'),
   tags = require('./lib/metalsmith-tag-edit.js'),
-  //imagemin = require('metalsmith-imagemin'),
+  imagemin = require('metalsmith-imagemin/lib/node5'),
   sitemap = require('metalsmith-sitemap'),
   drafts = require('metalsmith-drafts'),
   moment = require('moment'),
   LatLon = require('./node_modules/geodesy/npm.js').LatLonEllipsoidal,
-  OsGridRef = require('./node_modules/geodesy/npm.js').OsGridRef;
+  OsGridRef = require('./node_modules/geodesy/npm.js').OsGridRef,
+  imageResizer = require('metalsmith-image-resizer');
 
 
 
@@ -181,9 +182,11 @@ module.exports = Metalsmith(__dirname)
         return originalPath.replace("scss", "css");
     },
     outputStyle: "compressed"
-  }));
- /* .use(imagemin({
-    optimizationLevel: 3
   }))
-  */
+   .use(imageResizer({
+        glob: "**/images/*",
+        width: 1200,
+        height: 900
+    }));
+
 

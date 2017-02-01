@@ -1,9 +1,16 @@
 // _site-header.scss
 
+
 .site--header {
-  position: relative;
-  text-align: center;
-  margin-bottom: 24px;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: row;
+  min-height: 200px;
+
+    @media screen and (max-width: 600px) {
+      min-height: 250px;
+    }
+
 }
 
 .site--title {
@@ -13,19 +20,19 @@
   margin: 0;
   text-align: left;
 
-  @include rem-font-size(4);
+  @include rem-font-size(3);
   padding-left: 24px;
 
   span {
     display: block;
     @media screen and (max-width: 599px) {
       &.and {
-        font-size: 3rem;
+        font-size: 2rem;
       }
     }
   }
   @media screen and (min-width: 600px) {
-    @include rem-font-size(5);
+    @include rem-font-size(3);
     text-align: center;
     span {
       display: inline;
@@ -33,11 +40,11 @@
   }
 
   @media screen and (min-width: 800px) {
-    @include rem-font-size(7);
+    @include rem-font-size(6);
   }
 
   @media screen and (min-width: 1200px) {
-    @include rem-font-size(10);
+    @include rem-font-size(5);
   }
 
 }

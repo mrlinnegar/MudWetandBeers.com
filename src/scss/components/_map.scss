@@ -5,6 +5,7 @@
   padding: 0 10px;
   box-sizing: border-box;
   &.fixed {
+
     position: fixed;
     padding: 0;
     top: 40px;
@@ -13,8 +14,9 @@
       @include gridle_grid ( 4 );
     }
   }
-}
 
+
+}
 
 .map-wrapper {
   @include gridle_grid ( 12 );
@@ -24,8 +26,8 @@
 
 .map--grid-ref {
   @include rem-font-size(1.8);
-  color: lighten($dark, 5%);
-  float: right;
+  padding: 0 10px;
+  color: lighten($dark, 2%);
 }
 
 #map {
@@ -34,7 +36,5 @@
 
   background-color: darken($light, 2%);
 
-  @media screen and (max-width: 480px) {
-    display: none;
-  }
+
 }
