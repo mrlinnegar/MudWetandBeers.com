@@ -1,4 +1,4 @@
-app.service('MapProvider', function(NGRTOEN){
+app.service('MapProvider', function(NGRTOEN, OpenSpaceService){
   var options = {resolutions: [100, 50, 25, 10, 5], controls:[]};
   var nc = new OpenLayers.Control.Navigation();
   nc.activate = function() {
@@ -11,7 +11,6 @@ app.service('MapProvider', function(NGRTOEN){
   var routeMarkersLayer = new OpenLayers.Layer.Markers("Route Markers");
   var currentRef = "";
   var points = [];
-  var markers = [];
   var routeMarkers = {};
   var selected_marker = null;
 
@@ -20,11 +19,11 @@ app.service('MapProvider', function(NGRTOEN){
     var data = NGRTOEN(ref);
 
     routepos = new OpenSpace.MapPoint(data.e,data.n);
-    routesize = new OpenLayers.Size(50,50);
-    routeoffset = new OpenLayers.Pixel(0, 0);
+    routesize = new OpenLayers.Size(40,40);
+    routeoffset = new OpenLayers.Pixel(-20, -40);
     routeicon = new OpenSpace.Icon('/images/icons/point.png', routesize, routeoffset, null, null);
     var marker = new OpenLayers.Marker(routepos, routeicon)
-    markers.push(marker);
+
     routeMarkers[ref] = marker;
     routeMarkersLayer.addMarker(marker);
   }
@@ -33,8 +32,8 @@ app.service('MapProvider', function(NGRTOEN){
   function addSelectedPoint(ref){
     var data = NGRTOEN(ref);
     routepos = new OpenSpace.MapPoint(data.e,data.n);
-    routesize = new OpenLayers.Size(50,50);
-    routeoffset = new OpenLayers.Pixel(0, 0);
+    routesize = new OpenLayers.Size(40,40);
+    routeoffset = new OpenLayers.Pixel(-20, -40);
     routeicon = new OpenSpace.Icon('/images/icons/point-selected.png', routesize, routeoffset, null, null);
 
     if(selected_marker) {
@@ -54,6 +53,40 @@ app.service('MapProvider', function(NGRTOEN){
     osMap.setCenter(new OpenSpace.MapPoint(e, n), 7);
   }
 
+  function setRoute(pointData){
+
+    //set the center of the map and the zoom level
+    linesLayer = osMap.getVectorLayer();
+    // Set up layer for route markers
+
+
+    //make a route
+    osMap.setCenter(new OpenSpace.MapPoint(pointData[0].easting,pointData[0].northing), 6);
+
+    for(var i = 0, len = pointData.length; i < len; i++){
+      var point = pointData[i];
+      points.push(new OpenLayers.Geometry.Point(Math.floor(point.easting), Math.floor(point.northing)));
+    }
+    // create a polyline feature from the array of points
+    lineString = new OpenLayers.Geometry.LineString(points);
+    lineFeature = new OpenLayers.Feature.Vector(lineString, null, {strokeColor: "#0000CD", strokeOpacity: 0.5, strokeWidth: 10});
+    linesLayer.addFeatures([lineFeature]);
+    //crate a route start/end marker
+    routepos = new OpenSpace.MapPoint(pointData[0].easting, pointData[0].northing);
+    routesize = new OpenLayers.Size(33,45);
+    routeoffset = new OpenLayers.Pixel(-5,-37);
+    routeicon = new OpenSpace.Icon('https://openspace.ordnancesurvey.co.uk/osmapapi/img_versions/img_1.1/mapbuilder/routemarker-start.png', routesize, routeoffset, null, null);
+    routeMarkersLayer.addMarker(new OpenLayers.Marker(routepos, routeicon));
+    //crate a route start/end marker
+    routepos = new OpenSpace.MapPoint(pointData[len-1].easting, pointData[len-1].northing);
+    routesize = new OpenLayers.Size(33,45);
+    routeoffset = new OpenLayers.Pixel(-5,-37);
+    routeicon = new OpenSpace.Icon('https://openspace.ordnancesurvey.co.uk/osmapapi/img_versions/img_1.1/mapbuilder/routemarker-end.png', routesize, routeoffset, null, null);
+    routeMarkersLayer.addMarker(new OpenLayers.Marker(routepos, routeicon));
+    osMap.addLayer(routeMarkersLayer);
+
+  }
+
   return {
     setCenter: setCenter,
     setGridRef: function(ref){
@@ -70,37 +103,6 @@ app.service('MapProvider', function(NGRTOEN){
         addPoint(points[i]);
       }
     },
-    setRoute: function(pointData){
-
-      //set the center of the map and the zoom level
-      linesLayer = osMap.getVectorLayer();
-      // Set up layer for route markers
-
-
-      //make a route
-      osMap.setCenter(new OpenSpace.MapPoint(pointData[0].easting,pointData[0].northing), 6);
-
-      for(var i = 0, len = pointData.length; i < len; i++){
-        var point = pointData[i];
-        points.push(new OpenLayers.Geometry.Point(Math.floor(point.easting), Math.floor(point.northing)));
-      }
-      // create a polyline feature from the array of points
-      lineString = new OpenLayers.Geometry.LineString(points);
-      lineFeature = new OpenLayers.Feature.Vector(lineString, null, {strokeColor: "#0000CD", strokeOpacity: 0.5, strokeWidth: 10});
-      linesLayer.addFeatures([lineFeature]);
-      //crate a route start/end marker
-      routepos = new OpenSpace.MapPoint(pointData[0].easting, pointData[0].northing);
-      routesize = new OpenLayers.Size(33,45);
-      routeoffset = new OpenLayers.Pixel(-5,-37);
-      routeicon = new OpenSpace.Icon('https://openspace.ordnancesurvey.co.uk/osmapapi/img_versions/img_1.1/mapbuilder/routemarker-start.png', routesize, routeoffset, null, null);
-      routeMarkersLayer.addMarker(new OpenLayers.Marker(routepos, routeicon));
-      //crate a route start/end marker
-      routepos = new OpenSpace.MapPoint(pointData[len-1].easting, pointData[len-1].northing);
-      routesize = new OpenLayers.Size(33,45);
-      routeoffset = new OpenLayers.Pixel(-5,-37);
-      routeicon = new OpenSpace.Icon('https://openspace.ordnancesurvey.co.uk/osmapapi/img_versions/img_1.1/mapbuilder/routemarker-end.png', routesize, routeoffset, null, null);
-      routeMarkersLayer.addMarker(new OpenLayers.Marker(routepos, routeicon));
-      osMap.addLayer(routeMarkersLayer);
-    }
+    setRoute: setRoute
   };
 })

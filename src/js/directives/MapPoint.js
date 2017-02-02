@@ -22,12 +22,8 @@ app.directive('mapPoint', function($window, MapProvider, $timeout){
   }
 
 
-
-  return {
-    scope: false,
-    link: function ($scope, $element, $attr) {
-
-      var scrollDelay = 250,
+  function link ($scope, $element, $attr) {
+    var scrollDelay = 250,
         scrollThrottleTimeout,
         throttled = false,
         scrollListener = function (e) {
@@ -51,7 +47,13 @@ app.directive('mapPoint', function($window, MapProvider, $timeout){
       if(typeof $scope.mapPoints == "undefined") $scope.mapPoints = [];
       $scope.mapPoints.push($attr.ngr);
       elements.push($element);
+      $element.wrap('<div class="article--image"></div>');
       angular.element($window).bind("scroll", scrollListener);
-    }
-  };
-})
+  }
+
+  return {
+    restrict: 'A',
+    scope: false,
+    link: link
+   };
+});

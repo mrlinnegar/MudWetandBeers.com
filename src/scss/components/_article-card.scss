@@ -32,14 +32,9 @@
 
   .article-card--image {
     overflow: hidden;
-    height: 250px;
-    position: relative;
-    img {
-      width: 100%;
-      position: absolute;
-      top: -25%;
-    }
-  }
+    background-size:cover;
+    background-position: center;
+   }
 
   .article-card--leader {
     @include rem-font-size(1.5);

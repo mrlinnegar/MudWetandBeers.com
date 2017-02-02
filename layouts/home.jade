@@ -2,7 +2,6 @@
 extends layout
 
 block head
-
   section.site--header
     .container
       .row
@@ -14,7 +13,17 @@ block head
             span Beers.com
       .row
         .g-12
-          p.Site--lead=site.lead
+          p.site--lead=site.lead
+  section
+    .container
+      div(class="row row@mobile")
+        .gr-12
+          .article--breadcrumb
+            a(href="/") Home
+            span /
+
+            span
+              !=title
 
 block content
 

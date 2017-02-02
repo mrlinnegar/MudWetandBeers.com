@@ -20,19 +20,18 @@ block content
               = title
 
     #sticky-bar-anchor
-    section
+    section.article--breadcrumb
       .container
         div(class="row row@mobile")
           .gr-12
-            .article--breadcrumb
-              a(href="/") Home
-              span /
-              if region && region.length > 0
-                each tag, index in region
-                  a(href="/region/#{tag.toLowerCase().split(' ').join('-')}") #{tag}
-              span /
-              span
-                !=title
+            a(href="/") Home
+            span /
+            if region && region.length > 0
+              each tag, index in region
+                a(href="/region/#{tag.toLowerCase().split(' ').join('-')}") #{tag}
+            span /
+            span
+              !=title
     section
       .container
         div(class="row-reverse row-reverse@mobile")
@@ -98,7 +97,8 @@ block content
             p.article--lead
               != lead
 
-            != contents
+            div.article--walk
+              != contents
 
              #disqus_thread
               script.

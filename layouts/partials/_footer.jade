@@ -3,7 +3,7 @@
 section.footer.footer--links
   .container
     div(class="row row@mobile")
-      .gr-4
+      div(class="gr-4 gr-12@mobile")
         h4.footer--title Regions
         ul.footer--list
           - for (var r in regions ) {
@@ -12,7 +12,18 @@ section.footer.footer--links
                 =r
               span &nbsp;(#{regions[r].length})
           - }
-      .gr-2
+      div(class="gr-4 gr-12@mobile")
+        h4.footer--title Pages
+        ul.footer--list
+          li
+            a(href='/about') About
+
+      div(class="gr-4 gr-12@mobile")
+        h4.footer--title Contact
+        ul.footer--list
+          li
+            a(href='mailto:james@mudwetandbeers.com') Email
+
 section.footer.footer--copyright
   .container
     div(class="row row@mobile")

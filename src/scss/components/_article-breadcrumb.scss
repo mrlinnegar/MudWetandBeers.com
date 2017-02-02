@@ -1,4 +1,5 @@
 .article--breadcrumb {
+  background-color: darken($light, 2%);
   padding: 0.8em 0;
 
   @include rem-font-size(1.5);

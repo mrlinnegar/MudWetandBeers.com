@@ -19,14 +19,14 @@ $settings : (
 
 // make the use of media queries really easy
 @include gridle_register_state ( mobile , (
-    max-width : 480px,
+    max-width : 630px,
     gutter-left: 0px,
     gutter-right: 0px
 ) );
 
 
 @include gridle_register_state ( tablet , (
-    min-width : 481px,
+    min-width : 631px,
     max-width : 1279px
 ) ) ;
 
@@ -46,7 +46,7 @@ section {
     max-width : 1280px;
     margin : 0 auto;
 
-    @media screen and (min-width: 481px) {
+    @include gridle_state( mobile tablet) {
       padding: 0 10px;
     }
 }

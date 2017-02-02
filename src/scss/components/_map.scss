@@ -2,17 +2,22 @@
 .map-container {
   width: 100%;
   max-width: 1280px;
-  padding: 0 10px;
   box-sizing: border-box;
-  &.fixed {
 
-    position: fixed;
-    padding: 0;
-    top: 40px;
+  @include gridle_state(tablet desktop) {
 
-    .map-wrapper {
-      @include gridle_grid ( 4 );
+    padding: 0 10px;
+
+    &.fixed {
+      position: fixed;
+      padding: 0;
+      top: 40px;
+
+      .map-wrapper {
+        @include gridle_grid ( 4 );
+      }
     }
+
   }
 
 
@@ -27,14 +32,15 @@
 .map--grid-ref {
   @include rem-font-size(1.8);
   padding: 0 10px;
-  color: lighten($dark, 2%);
+  color: lighten($dark, 1%);
 }
 
 #map {
-  height: 600px;
+  height: 300px;
   width: 100%;
-
   background-color: darken($light, 2%);
 
-
+  @include gridle_state(tablet desktop) {
+    height: 600px;
+  }
 }

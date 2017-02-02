@@ -4,9 +4,10 @@ author: James
 publishDate: 2016-02-6
 layout: walk.jade
 region: The Lake District
-gpx: castle-cragg.gpx
+gpx: haystacks.gpx
 image: images/IMG_4911.jpg
-draft: true
+draft: false
+map: OL4
 ---
 
 
