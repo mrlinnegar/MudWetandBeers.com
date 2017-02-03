@@ -127,6 +127,9 @@
 .article--image {
   position: relative;
 
+
+
+
   @include gridle_state(mobile) {
     margin-left:-10px;
     margin-right: -10px;
@@ -140,9 +143,18 @@
       background-color: #FD9651;
       position: absolute;
       border-radius: 100%;
-      left: -52px;
+      left: -51px;
       top: 0;
       border:3px solid #FD9651;
+      -webkit-transition: all 0.5s ease;
+    }
+
+    &.active:before {
+      box-shadow: 0 0 12px #FD9651;
+      background-color: white;
+      border: 1px solid #FD9651;
+      width: 36px;
+      height: 36px;
     }
 
     &:after {
@@ -155,6 +167,12 @@
       background-image: url(/images/icons/point.png);
       background-size: cover;
     }
+
+    &.active:after {
+      background-image: url(/images/icons/point-selected.png);
+    }
+
+
   }
 
 }

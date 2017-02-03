@@ -34,9 +34,12 @@ block content
               !=title
     section
       .container
-        div(class="row-reverse row-reverse@mobile")
+        div(class="row row@mobile")
+          div(class="gr-8 gr-12@mobile float-left")
+            p.article--lead
+              != lead
 
-          div(class="gr-4 gr-12@mobile")
+          div(class="gr-4 gr-12@mobile float-right")
             h3
               | About
             .article--properties
@@ -80,6 +83,11 @@ block content
                       each gr, index in grade
                         a(href="/grade/#{gr.toLowerCase().split(' ').join('-')}/") #{gr}
 
+          div(class="gr-8 gr-12@mobile float-left")
+            div.article--walk
+              != contents
+
+          div(class="gr-4 gr-12@mobile float-right")
             #sticky-map-anchor
             .container.map-container(sticky anchor="#sticky-map-anchor")
               div(class="row row@mobile")
@@ -91,15 +99,7 @@ block content
                       | {{gridRef}}
                   #map
 
-          div(class="gr-8 gr-12@mobile")
-
-
-            p.article--lead
-              != lead
-
-            div.article--walk
-              != contents
-
+          div(class="gr-8 gr-12@mobile float-left")
              #disqus_thread
               script.
                 var disqus_config = function () {

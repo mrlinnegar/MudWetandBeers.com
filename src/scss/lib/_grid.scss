@@ -46,7 +46,7 @@ section {
     max-width : 1280px;
     margin : 0 auto;
 
-    @include gridle_state( mobile tablet) {
+    @include gridle_state( tablet desktop) {
       padding: 0 10px;
     }
 }

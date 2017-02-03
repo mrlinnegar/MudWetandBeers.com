@@ -33,11 +33,17 @@ app.directive('mapPoint', function($window, MapProvider, $timeout){
             scrollThrottleTimeout = $timeout(function(){
               for (var i = 0; i < elements.length; i++) {
                 if (inView(offset(elements[i]))) {
-                  var ngr = angular.element(elements[i]).attr("ngr")
+                  var ngr = angular.element(elements[i]).attr("ngr");
+                  angular.element(elements[i]).parent().toggleClass('active', true);
                   MapProvider.setGridRef(ngr);
                   $scope.gridRef = ngr;
+
                   break;
+                } else {
+                  angular.element(elements[i]).parent().toggleClass('active', false);
                 }
+
+
               }
               throttled = false;
             }, scrollDelay);
@@ -48,6 +54,11 @@ app.directive('mapPoint', function($window, MapProvider, $timeout){
       $scope.mapPoints.push($attr.ngr);
       elements.push($element);
       $element.wrap('<div class="article--image"></div>');
+
+      if($element.attr('title')) {
+        $element.parent().append('<div class="image--description">' + $element.attr('title') + '</div>');
+      }
+
       angular.element($window).bind("scroll", scrollListener);
   }
 
