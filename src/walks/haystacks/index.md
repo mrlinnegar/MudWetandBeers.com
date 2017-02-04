@@ -1,7 +1,7 @@
 ---
 title: Haystacks
 author: James
-publishDate: 2016-02-6
+publishDate: 2016-02-06
 layout: walk.jade
 region: The Lake District
 gpx: haystacks.gpx

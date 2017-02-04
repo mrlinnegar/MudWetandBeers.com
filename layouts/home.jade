@@ -14,7 +14,7 @@ block head
       .row
         .g-12
           p.site--lead=site.lead
-  section
+  section.article--breadcrumb
     .container
       div(class="row row@mobile")
         .gr-12
@@ -30,12 +30,11 @@ block content
   section
     .container
       div(class="row row@mobile")
-        div(class="gr-12 gr-12@mobile")
-          - for (var i = 0; i < collections.featured.length; i++) {
-            div
-              if collections.featured[i]
-                .gr-6
-                  - walk = collections.featured[i]
-                  include partials/article_card
-          - }
+
+        - for (var i = 0; i < collections.walks.length; i++) {
+          if collections.walks[i]
+            .gr-6
+              - walk = collections.walks[i]
+              include partials/article_card
+        - }
 
