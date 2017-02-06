@@ -1,8 +1,8 @@
 .article-card
   .row
-    .gr-6.article-card--image
+    div(class="gr-6 gr-12@mobile article-card--image")
       img(src="/#{walk.path}#{walk.image}")
-    .gr-6
+    div(class="gr-6 gr-12@mobile")
       a(href="/region/#{walk.regionUrlSafe}/").article-card--tag
         =walk.region
 

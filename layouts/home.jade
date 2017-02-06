@@ -30,10 +30,9 @@ block content
   section
     .container
       div(class="row row@mobile")
-
         - for (var i = 0; i < collections.walks.length; i++) {
           if collections.walks[i]
-            .gr-6
+            div(class="gr-6 gr-12@mobile")
               - walk = collections.walks[i]
               include partials/article_card
         - }
