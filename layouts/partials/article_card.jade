@@ -1,17 +1,16 @@
 .article-card
   .row
-    div(class="gr-6 gr-12@mobile article-card--image")
+    div(class="gr-6 article-card--image")
       img(src="/#{walk.path}#{walk.image}")
-    div(class="gr-6 gr-12@mobile")
-      a(href="/region/#{walk.regionUrlSafe}/").article-card--tag
-        =walk.region
-
-      span.article-card--date
-        =walk.publishDate
+    div(class="gr-6")
 
       a(href="/#{walk.path}")
         h2.article-card--title
           =walk.title
-
-      p.article-card--leader
-        =walk.lead
+      span.article-card--date
+        =walk.publishDate
+      div("hide@mobile")
+        p.article-card--leader
+          =walk.lead
+        a(href="/region/#{walk.regionUrlSafe}/").article-card--tag
+          =walk.region

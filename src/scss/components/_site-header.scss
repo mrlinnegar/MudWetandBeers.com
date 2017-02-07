@@ -6,7 +6,7 @@
   align-items: center;
   flex-direction: row;
   min-height: 500px;
-  background-image: url('/images/heather.jpg');
+  background-image: url('/images/map.jpg');
   background-size: cover;
   background-position: center;
 
@@ -17,8 +17,8 @@
 }
 
 .site--title {
-  color: white;
-  text-shadow: 0 0 15px black;
+  color: $panel;
+  text-shadow: 0 0 2px white;
   font-variant: small-caps;
   margin: 0;
   text-align: center;
@@ -35,7 +35,7 @@
     }
   }
   @media screen and (min-width: 600px) {
-    @include rem-font-size(3);
+    @include rem-font-size(4);
     text-align: center;
     span {
       display: inline;
@@ -43,23 +43,22 @@
   }
 
   @media screen and (min-width: 800px) {
-    @include rem-font-size(6);
+    @include rem-font-size(7);
   }
 
   @media screen and (min-width: 1200px) {
-    @include rem-font-size(5);
+    @include rem-font-size(10);
   }
 
 }
 
 .site--lead {
-  color: white;
+  color: $panel;
   @include rem-font-size(2);
-
 
   @media screen and (min-width: 600px) {
     @include rem-font-size(3);
   }
   text-align: center;
-  text-shadow: 0 0 5px black;
 }
+

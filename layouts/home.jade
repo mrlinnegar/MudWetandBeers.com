@@ -14,26 +14,38 @@ block head
       .row
         .g-12
           p.site--lead=site.lead
-  section.article--breadcrumb
+
+  section.site--navigation
     .container
       div(class="row row@mobile")
         .gr-12
-          .article--breadcrumb
-            a(href="/") Home
-            span /
-
-            span
-              !=title
+          ul
+          - for (var r in regions ) {
+            li
+              a(href="/region/#{regions[r].urlSafe}/")
+                =r
+          - }
 
 block content
 
   section
     .container
       div(class="row row@mobile")
-        - for (var i = 0; i < collections.walks.length; i++) {
-          if collections.walks[i]
-            div(class="gr-6 gr-12@mobile")
-              - walk = collections.walks[i]
-              include partials/article_card
-        - }
-
+        div(class="gr-12")
+          - for (var i = 0; i < collections.walks.length; i++) {
+            if collections.walks[i]
+              div(class="gr-12")
+                - walk = collections.walks[i]
+                include partials/article_card
+          - }
+  hr
+  section
+    .container
+      div(class="row row@mobile")
+        div(class="gr-12")
+          - for (var i = 0; i < collections.walks.length; i++) {
+            if collections.walks[i]
+              div(class="gr-4 gr-12@mobile")
+                - walk = collections.walks[i]
+                include partials/_article_mini
+          - }

@@ -1,0 +1,10 @@
+.article-mini
+  a(href="/#{walk.path}")
+    .row
+      div(class="gr-12 article-mini--image")
+        img(src="/#{walk.path}#{walk.image}")
+      div(class="gr-12")
+        h2.article-mini--title
+          =walk.title
+        span.article-mini--region
+          =walk.region

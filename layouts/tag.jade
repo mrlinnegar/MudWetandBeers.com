@@ -3,11 +3,11 @@ extends page
 block head
   include partials/_top_bar.jade
 
-  section.Site--header
+  section.article--header-background(style="background-image:url(#{image});")
     .container
       .row
         .gr-12
-          h1.Site--title=title
+          h1.article--title=title
 
 block content
 

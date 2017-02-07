@@ -12,6 +12,7 @@
 @import "components/map";
 @import "components/article-card";
 @import "components/article-lead";
+@import "components/article-mini";
 
 @import "components/article";
 
@@ -23,8 +24,6 @@
 body {
   background-color: $light;
 }
-
-// manage container width :
 
 
 .site--top-bar {
@@ -39,5 +38,6 @@ body {
   display: inline-block;
   padding: 10px 0;
   color: white;
+
 }
 
