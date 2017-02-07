@@ -2,22 +2,11 @@
 extends page
 
 block content
-  section.Article--header-background
+  section.article--header-background
     .container
       .row
-        .gr-12.Article--header
-          h1.Article--title!= title
-
-
-    section
-      .container
-        div(class="row row@mobile")
-          .gr-12
-            .article--breadcrumb
-              a(href="/") Home
-              span /
-              span
-                !=title
+        .gr-12.article--header
+          h1.article--title!= title
 
   section
     .container
